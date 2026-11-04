@@ -1,9 +1,9 @@
 /* Richapps PWA service worker：stale-while-revalidate，仅处理同源 GET */
-const CACHE = 'richapps-v1';
+const CACHE = 'richapps-v2';
 const CORE = [
   '/',
   '/index.html',
-  '/downloads.html',
+  '/downloads',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
   '/icons/icon-512.png',

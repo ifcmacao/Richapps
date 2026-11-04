@@ -48,6 +48,13 @@
   .dl{display:inline-flex;align-items:center;justify-content:center;gap:8px;
     padding:12px 18px;border-radius:12px;font-size:14px;font-weight:700;
     background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1220}
+  .ios-card{display:flex;gap:18px;align-items:flex-start;margin-top:40px;padding:clamp(18px,4vw,26px);
+    border-radius:18px;border:1px solid rgba(56,189,248,.35);
+    background:linear-gradient(135deg,rgba(56,189,248,.10),rgba(129,140,248,.10))}
+  .ios-card .icon{margin-bottom:0;flex-shrink:0}
+  .ios-card h2{margin:0 0 8px;font-size:1.1rem}
+  .ios-card p{margin:0 0 6px;color:var(--muted);line-height:1.7;font-size:14px}
+  .ios-card a{color:var(--accent);text-decoration:underline}
   .note{margin:36px 0 0;color:#64748b;font-size:13px;text-align:center;line-height:1.7}
   .note a{color:var(--accent);text-decoration:underline}
   footer{text-align:center;color:#64748b;font-size:12px;padding:28px 16px 36px}
@@ -79,6 +86,15 @@
         <div class="meta">v1.0 · 约 12.5 KB</div>
         <span class="dl">⬇ 下载 APK</span>
       </a>
+    </div>
+
+    <div class="ios-card">
+      <div class="icon">📱</div>
+      <div>
+        <h2>iPhone / iPad 安装（PWA）</h2>
+        <p>两个 App 均支持 PWA：用 Safari 打开对应网页 → 点「分享」→「添加到主屏幕」，即可获得独立图标与全屏 App 体验。</p>
+        <p><a href="/">我成功了</a> &nbsp;·&nbsp; <a href="https://afcm-showcase.pages.dev/" target="_blank" rel="noopener">AFcm 澳門金融合規觀察</a></p>
+      </div>
     </div>
 
     <p class="note">下载遇到问题？可直接访问 <a href="https://github.com/ifcmacao/Richapps/releases" target="_blank" rel="noopener">GitHub Releases</a> 页面获取。</p>

@@ -1,0 +1,10 @@
+{
+  "name": "richapps",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Richapps - 学习/练习 AI 开发的自用工具空间。首个里程碑：网页与 APK 均显示“我成功了”。",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "build:apk": "bash android/build-apk.sh"
+  }
+}

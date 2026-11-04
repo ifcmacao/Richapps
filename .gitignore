@@ -1,0 +1,13 @@
+# Android SDK（本地安装，不入库）
+/android-sdk/
+
+# APK 构建中间产物与签名密钥
+/android/build/
+/android/keystore/
+
+# Node
+node_modules/
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db

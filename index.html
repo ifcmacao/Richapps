@@ -1,29 +1,85 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>我成功了</title>
-  <style>
-    html, body { height: 100%; margin: 0; }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-    }
-    h1 {
-      font-size: clamp(2rem, 9vw, 6rem);
-      letter-spacing: 0.25em;
-      font-weight: 700;
-      margin: 0;
-      padding-left: 0.25em; /* 抵消字间距造成的右偏 */
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Richapps · 我的 AI 开发练习空间</title>
+<style>
+  :root{
+    --bg:#0b1220; --card:rgba(30,41,59,.55);
+    --line:rgba(148,163,184,.18); --text:#e2e8f0; --muted:#94a3b8;
+    --accent:#38bdf8; --accent2:#818cf8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;}
+  body{min-height:100vh;display:flex;flex-direction:column;
+    background:
+      radial-gradient(900px 500px at 50% -10%, rgba(56,189,248,.16), transparent 60%),
+      radial-gradient(700px 420px at 90% 10%, rgba(129,140,248,.12), transparent 60%),
+      var(--bg);}
+  a{color:inherit;text-decoration:none}
+  .topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(16px,4vw,48px);backdrop-filter:blur(12px);
+    background:rgba(11,18,32,.72);border-bottom:1px solid var(--line);}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+  .logo{width:26px;height:26px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 0 18px rgba(56,189,248,.45)}
+  .btn{padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;
+    border:1px solid rgba(56,189,248,.45);background:rgba(56,189,248,.12);
+    color:#bae6fd;transition:.2s}
+  .btn:hover{background:rgba(56,189,248,.22);transform:translateY(-1px)}
+  main{flex:1;width:100%;max-width:960px;margin:0 auto;padding:clamp(28px,6vw,72px) clamp(16px,4vw,32px)}
+  .hero{text-align:center;padding:clamp(24px,7vw,72px) 0 clamp(28px,6vw,64px)}
+  .hero h1{font-size:clamp(2.4rem,11vw,6.4rem);margin:0;letter-spacing:.22em;padding-left:.22em;
+    font-weight:800;line-height:1.05;
+    background:linear-gradient(135deg,#e2e8f0 10%,var(--accent) 55%,var(--accent2) 95%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 28px rgba(56,189,248,.25))}
+  .hero p{margin:18px 0 0;color:var(--muted);font-size:clamp(.9rem,2.6vw,1.05rem);letter-spacing:.04em}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:8px 0 36px}
+  .section-label{font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin:0 0 14px}
+  .card{border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);
+    background:linear-gradient(180deg,var(--card),rgba(15,23,42,.75));
+    box-shadow:0 18px 50px -24px rgba(0,0,0,.9)}
+  .card h2{margin:0 0 10px;font-size:clamp(1.25rem,4vw,1.7rem)}
+  .card p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .actions a{padding:11px 20px;border-radius:12px;font-size:14px;font-weight:600;border:1px solid var(--line);transition:.2s}
+  .actions a.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1220;border:0}
+  .actions a.ghost{background:rgba(148,163,184,.08)}
+  .actions a:hover{opacity:.92;transform:translateY(-1px)}
+  footer{text-align:center;color:#64748b;font-size:12px;padding:28px 16px 36px}
+</style>
 </head>
 <body>
-  <h1>我成功了</h1>
+  <header class="topbar">
+    <div class="brand"><span class="logo"></span>Richapps</div>
+    <a class="btn" href="downloads.html">📥 App 下载</a>
+  </header>
+
+  <main>
+    <!-- 第一个网页：保留「我成功了」 -->
+    <section class="hero">
+      <h1>我成功了</h1>
+      <p>第一个网页 · 从零搭建的开发与发布通道</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第二个网页：AFcm -->
+    <p class="section-label">第二个网页</p>
+    <section class="card">
+      <h2>AFcm 澳門金融合規觀察</h2>
+      <p>澳门金融合规观察静态展示站，Astro 构建的纯静态站点，涵盖文章、快讯、法规、案例、RBA、工具与词汇等栏目。</p>
+      <div class="actions">
+        <a class="primary" href="https://afcm-showcase.pages.dev/" target="_blank" rel="noopener">打开网页</a>
+        <a class="ghost" href="downloads.html">下载 App</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Richapps · 个人 AI 开发练习空间</footer>
 </body>
 </html>

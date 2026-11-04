@@ -4,6 +4,8 @@
 # APK 构建中间产物与签名密钥
 /android/build/
 /android/keystore/
+/android-afcm/build/
+/android-afcm/keystore/
 
 # Node
 node_modules/

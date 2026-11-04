@@ -60,16 +60,20 @@ echo "[5/7] 把 classes.dex 打进 APK"
 echo "[6/7] 对齐 (zipalign)"
 "$ZIPALIGN" -p 4 "$APKDIR/with-dex.apk" "$APKDIR/aligned.apk"
 
-echo "[7/7] 签名 (jarsigner)"
+echo "[7/7] 签名 (apksigner, 启用 v1+v2 签名方案)"
 if [ ! -f "$KEYSTORE" ]; then
   "$KEYTOOL" -genkeypair -v -keystore "$KEYSTORE" -alias richapps \
     -keyalg RSA -keysize 2048 -validity 10000 \
     -storepass android -keypass android \
     -dname "CN=Richapps, OU=Dev, O=Richapps, C=CN"
 fi
-"$JARSIGNER" -sigalg SHA256withRSA -digestalg SHA-256 \
-  -keystore "$KEYSTORE" -storepass android -keypass android \
-  "$APKDIR/aligned.apk" richapps
+# Android 11+ 要求 targetSdk>=30 的 APK 必须有 v2 签名；
+# jarsigner 只能产 v1，故必须用 apksigner（经 java -jar 调用，避开 .bat 引号问题）。
+java -jar "$BUILD_TOOLS/lib/apksigner.jar" sign \
+  --ks "$KEYSTORE" --ks-pass pass:android --key-pass pass:android \
+  --ks-key-alias richapps \
+  --out "$APKDIR/app-release.apk" \
+  "$APKDIR/aligned.apk"
 
-cp "$APKDIR/aligned.apk" "$OUT/app-release.apk"
+cp "$APKDIR/app-release.apk" "$OUT/app-release.apk"
 echo "BUILD OK -> $OUT/app-release.apk"

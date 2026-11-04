@@ -11,3 +11,9 @@ node_modules/
 # 系统/编辑器
 .DS_Store
 Thumbs.db
+
+# Wrangler 本地缓存
+.wrangler/
+
+# 临时发布目录（wrangler pages deploy 用）
+public/

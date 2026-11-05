@@ -3,269 +3,663 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMCM 指引通 · 澳門金融管理局監管指引庫</title>
+<title>AMCM 指引通 · 澳門金融監管指引資料庫</title>
 <style>
 :root{
-  --navy:#1B2A4A; --navy2:#24365c; --gold:#C9A961; --gold2:#b3924e;
-  --bg:#f4f6fa; --card:#fff; --text:#1e293b; --muted:#64748b; --line:#e2e8f0;
+  --s900:#0f172a; --s800:#1e293b; --s700:#334155; --s500:#64748b; --s400:#94a3b8;
+  --amber:#d97706; --amber2:#f59e0b; --bg:#f8fafc; --line:#e2e8f0;
+  --green:#16a34a; --gray:#94a3b8; --orange:#ea580c;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:28px 20px 20px;border-bottom:3px solid var(--gold)}
-.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
-.brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#e0c98a);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;letter-spacing:1px}
-h1{font-size:24px;font-weight:800}
-.brand small{display:block;font-weight:400;font-size:12px;opacity:.75;letter-spacing:.5px}
-nav{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}
-nav button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#e8edf7;padding:9px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-size:15px;transition:.15s}
-nav button.active{background:#fff;color:var(--navy);font-weight:700;border-color:#fff}
-.searchbar{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
-.searchbar input{flex:1;min-width:220px;padding:12px 16px;border:2px solid var(--line);border-radius:10px;font-size:16px;outline:none;background:#fff}
-.searchbar input:focus{border-color:var(--gold)}
-.searchbar select{padding:12px;border:2px solid var(--line);border-radius:10px;background:#fff;font-size:14px}
-.searchbar button{padding:12px 26px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;cursor:pointer;font-weight:700}
-.searchbar button:hover{background:var(--navy2)}
-.meta{color:var(--muted);font-size:13px;margin:6px 0 14px}
-.gcard{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:.15s}
-.gcard:hover{box-shadow:0 4px 16px rgba(27,42,74,.10);transform:translateY(-1px)}
-.gcard h3{font-size:16px;color:var(--navy);font-weight:700}
-.gcard .no{color:var(--gold2);font-weight:700;font-size:13px;margin-right:8px}
-.badges{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:11px;padding:2px 10px;border-radius:20px;background:#eef2f8;color:var(--muted)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans HK","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--s800);line-height:1.7}
+.wrap{max-width:1150px;margin:0 auto;padding:0 16px}
+header{background:var(--s900);color:#fff;padding:22px 0 0;border-bottom:3px solid var(--amber2)}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brandl{display:flex;align-items:center;gap:14px}
+.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--amber),#fbbf24);color:var(--s900);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px}
+h1{font-size:22px;font-weight:800;letter-spacing:.5px}
+.brand small{display:block;font-weight:400;font-size:11.5px;color:var(--s400);letter-spacing:.4px}
+.hbtns{display:flex;gap:8px}
+.hbtns button{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#e2e8f0;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13.5px;transition:.15s}
+.hbtns button:hover{background:rgba(255,255,255,.16);border-color:var(--amber2)}
+nav{display:flex;gap:4px;margin-top:16px;flex-wrap:wrap}
+nav button{background:transparent;border:none;color:var(--s400);padding:10px 22px;cursor:pointer;font-size:15px;border-radius:8px 8px 0 0;border-bottom:3px solid transparent;transition:.15s}
+nav button.active{color:#fff;font-weight:700;border-bottom-color:var(--amber2);background:rgba(255,255,255,.05)}
+main{padding:22px 0 40px}
+/* filter bar */
+.fbar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;box-shadow:0 1px 3px 0 rgb(0 0 0/.1)}
+.fbar select,.fbar input{padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:#fff;color:var(--s800);outline:none}
+.fbar select:focus,.fbar input:focus{border-color:var(--amber2)}
+.fbar input{flex:1;min-width:180px}
+.fbar .go{background:var(--s900);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px}
+.fbar .go:hover{background:var(--s800)}
+.meta{color:var(--s500);font-size:13px;margin:14px 2px 10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* guideline card */
+.gcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 3px 0 rgb(0 0 0/.1);transition:.18s;cursor:pointer}
+.gcard:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,23,42,.10)}
+.gtop{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.gcat{font-size:12px;font-weight:700;color:var(--amber);letter-spacing:.4px}
+.gdate{font-size:12.5px;color:var(--s500);white-space:nowrap}
+.gno{font-size:14px;font-weight:800;color:var(--s900);margin-top:4px}
+.gtitle{font-size:15.5px;font-weight:600;color:var(--s700);margin-top:2px}
+.gsumm{font-size:13px;color:var(--s500);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.tag{font-size:11px;padding:2.5px 11px;border-radius:20px;background:#f1f5f9;color:var(--s500);font-weight:600}
 .tag.ocr{background:#fef3c7;color:#92400e}
 .tag.mt{background:#ede9fe;color:#5b21b6}
-.tag.sector{background:#e0e9f8;color:var(--navy)}
-mark{background:#fde68a;padding:0 2px;border-radius:2px}
-.sr{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
-.sr .snip{font-size:14px;color:#334155;margin-top:6px}
-.sr .path{font-size:12px;color:var(--gold2);font-weight:700;cursor:pointer}
-.newsitem{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin-bottom:8px;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
-.newsitem .d{color:var(--muted);font-size:13px;white-space:nowrap}
+.tag.link{background:#eff6ff;color:#1d4ed8;cursor:pointer}
+.tag.link:hover{background:#dbeafe}
+.badge-status{font-size:11.5px;padding:3px 12px;border-radius:20px;font-weight:700;cursor:default}
+.badge-status.IN_FORCE{background:#dcfce7;color:var(--green)}
+.badge-status.EXPIRED{background:#f1f5f9;color:var(--gray)}
+.badge-status.SUPERSEDED{background:#ffedd5;color:var(--orange);cursor:pointer}
+.gactions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.gactions a,.gactions button{font-size:13px;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:600;cursor:pointer;border:none}
+.gactions .view{background:var(--s900);color:#fff}
+.gactions .pdf{background:#fff;color:var(--s700);border:1px solid var(--line)!important}
+.gactions .pdf:hover{border-color:var(--amber2)!important;color:var(--amber)}
+/* search result */
+.sr{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 20px;margin-bottom:10px;box-shadow:0 1px 3px 0 rgb(0 0 0/.1)}
+.sr .path{font-size:14.5px;font-weight:700;color:var(--s900);cursor:pointer}
+.sr .path:hover{color:var(--amber)}
+.sr .snip{font-size:13.5px;color:var(--s700);margin-top:6px;line-height:1.9}
+mark{background:#fde68a;padding:0 1px;border-radius:2px}
+/* news timeline */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tlitem{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:12px;box-shadow:0 1px 3px 0 rgb(0 0 0/.1)}
+.tlitem::before{content:"";position:absolute;left:-24px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--amber2);border:2.5px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.evtag{font-size:11px;font-weight:700;padding:2.5px 11px;border-radius:20px;background:#f1f5f9;color:var(--s500)}
+.evtag.新指引發布{background:#dcfce7;color:var(--green)}
+.evtag.條文修訂{background:#dbeafe;color:#1d4ed8}
+.evtag.文件廢止{background:#ffedd5;color:var(--orange)}
+/* detail */
+.back{color:var(--s700);cursor:pointer;font-weight:700;margin:14px 0;font-size:14px;display:inline-block}
+.back:hover{color:var(--amber)}
+.detail{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:0 1px 3px 0 rgb(0 0 0/.1)}
+.detail h2{color:var(--s900);font-size:20px;margin-bottom:6px}
+.dl{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.dl a{text-decoration:none;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:700}
+.dl a.pdf{background:var(--s900);color:#fff}
+.dl a.pdf:hover{background:var(--s800)}
+.dl a.site{background:#fff;color:var(--s700);border:1px solid var(--line)}
+.notice{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:10px 16px;font-size:13px;margin:14px 0}
+.localebar{display:flex;gap:8px;margin:18px 0 12px;flex-wrap:wrap}
+.localebar button{padding:7px 18px;border-radius:20px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px;font-weight:600;color:var(--s500)}
+.localebar button.on{background:var(--s900);color:#fff;border-color:var(--s900)}
+.pagenav{display:flex;align-items:center;gap:14px;margin:12px 0}
+.pagenav button{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px}
+.pagenav button:disabled{opacity:.35;cursor:default}
+.pagenav .pno{font-size:14px;color:var(--s500);min-width:110px;text-align:center}
+.ptext{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:24px;font-size:15px;min-height:220px;max-height:62vh;overflow:auto;line-height:2}
+.pmeta{color:var(--s500);font-size:12.5px;margin-top:10px}
+.search-highlight-active{background-color:#fef08a;color:#0f172a;padding:2px 4px;border-radius:4px;box-shadow:0 0 8px rgba(234,179,8,.6);animation:pulse-highlight 2s infinite}
+@keyframes pulse-highlight{0%,100%{box-shadow:0 0 8px rgba(234,179,8,.6)}50%{box-shadow:0 0 18px rgba(234,179,8,.95)}}
+.anchorbar{position:sticky;top:0;z-index:20;background:var(--s900);color:#fff;border-radius:10px;padding:10px 18px;font-size:13.5px;display:none;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.anchorbar button{background:rgba(255,255,255,.12);color:#fff;border:none;border-radius:6px;padding:5px 14px;cursor:pointer;font-size:12.5px}
+.anchorbar button:hover{background:var(--amber)}
+/* AI panel */
+.aipanel{margin-top:22px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.aihead{background:var(--s900);color:#fff;padding:12px 20px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.aihead small{color:var(--s400);font-weight:400;font-size:11.5px}
+.aibody{padding:18px;background:#fff}
+.ainput{display:flex;gap:10px;flex-wrap:wrap}
+.ainput input{flex:1;min-width:220px;padding:11px 15px;border:1px solid var(--line);border-radius:9px;font-size:14.5px;outline:none}
+.ainput input:focus{border-color:var(--amber2)}
+.ainput button{background:var(--amber);color:#fff;border:none;border-radius:9px;padding:11px 24px;font-weight:700;cursor:pointer;font-size:14px}
+.ainput button:hover{background:#b45309}
+.ainput button:disabled{opacity:.5;cursor:default}
+.aiout{margin-top:14px;font-size:14px;color:var(--s700);white-space:pre-wrap;line-height:1.9;max-height:420px;overflow:auto;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:16px;display:none}
+.aihint{font-size:12.5px;color:var(--s400);margin-top:10px}
+/* settings drawer */
+.mask{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50}
+.drawer{position:fixed;right:-460px;top:0;bottom:0;width:440px;max-width:92vw;background:#fff;z-index:51;transition:right .25s;box-shadow:-8px 0 30px rgba(15,23,42,.18);display:flex;flex-direction:column}
+.drawer.open{right:0}
+.drawer.open~.mask{display:block}
+.dhead{background:var(--s900);color:#fff;padding:16px 22px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.dhead button{background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.dbody{padding:20px 22px;overflow:auto;flex:1}
+.dbody label{display:block;font-size:12.5px;font-weight:700;color:var(--s700);margin:14px 0 5px}
+.dbody input,.dbody select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;outline:none}
+.dbody input:focus,.dbody select:focus{border-color:var(--amber2)}
+.row2{display:flex;gap:10px;align-items:center;margin-top:16px}
+.row2 button{background:var(--s900);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-weight:700;cursor:pointer;font-size:13.5px}
+.row2 button.test{background:var(--amber)}
+.statustxt{font-size:13px;font-weight:600}
+/* subscribe */
+.subbox{background:var(--s900);border-radius:14px;padding:26px 28px;margin-top:26px;color:#fff}
+.subbox h3{font-size:17px;margin-bottom:4px}
+.subbox p{color:var(--s400);font-size:13px;margin-bottom:14px}
+.subrow{display:flex;gap:10px;flex-wrap:wrap}
+.subrow input{flex:1;min-width:200px;padding:11px 15px;border-radius:9px;border:1px solid var(--s700);background:#1e293b;color:#fff;font-size:14px;outline:none}
+.subrow input::placeholder{color:var(--s400)}
+.subrow button{background:var(--amber);border:none;color:#fff;padding:11px 24px;border-radius:9px;font-weight:700;cursor:pointer;font-size:14px}
+.subrow button:hover{background:#b45309}
+.chkrow{display:flex;gap:18px;margin-top:12px;font-size:13px;color:var(--s400)}
+.chkrow label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.chkrow input{accent-color:var(--amber)}
+.submsg{margin-top:10px;font-size:13px;display:none;padding:9px 14px;border-radius:8px}
+.submsg.ok{display:block;background:#14532d;color:#bbf7d0}
+.submsg.bad{display:block;background:#7f1d1d;color:#fecaca}
+.empty{text-align:center;color:var(--s400);padding:44px 0}
+.modal{display:none;position:fixed;inset:0;z-index:60;background:rgba(15,23,42,.5);align-items:center;justify-content:center}
+.modal .mcard{background:#fff;border-radius:16px;padding:36px 44px;text-align:center;max-width:420px;box-shadow:0 10px 40px rgba(15,23,42,.25)}
+.modal .mcard .ok{font-size:44px}
+.modal h2{color:var(--s900);font-size:18px;margin:10px 0 8px}
+.modal p{color:var(--s500);font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:24px 0 30px;text-align:center;color:var(--s400);font-size:12.5px;line-height:2}
+footer a{color:var(--s700);text-decoration:none}
+footer a:hover{color:var(--amber)}
 section.panel{display:none}
 section.panel.active{display:block}
-/* detail */
-.back{color:var(--navy);cursor:pointer;font-weight:700;margin:16px 0;font-size:14px}
-.detail{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
-.detail h2{color:var(--navy);font-size:20px;margin-bottom:8px}
-.dl{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.dl a{background:var(--navy);color:#fff;text-decoration:none;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:600}
-.dl a:hover{background:var(--navy2)}
-.dl a.en{background:var(--gold);color:var(--navy)}
-.notice{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:8px;padding:10px 14px;font-size:13px;margin:12px 0}
-.localebar{display:flex;gap:8px;margin:16px 0 10px;flex-wrap:wrap}
-.localebar button{padding:7px 16px;border-radius:20px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
-.localebar button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
-.pagenav{display:flex;align-items:center;gap:12px;margin:10px 0}
-.pagenav button{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px}
-.pagenav button:disabled{opacity:.35;cursor:default}
-.ptext{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:20px;font-size:15px;min-height:200px;max-height:65vh;overflow:auto}
-.pmeta{color:var(--muted);font-size:12px;margin-top:8px}
-footer{margin:40px 0 24px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.9}
-footer a{color:var(--navy)}
-.empty{text-align:center;color:var(--muted);padding:40px 0}
-@media(max-width:600px){h1{font-size:19px}.ptext{font-size:14px;padding:14px}}
+@media(max-width:640px){h1{font-size:18px}.ptext{font-size:14px;padding:16px}.detail{padding:18px}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <div class="brand">
-      <div class="logo">指</div>
-      <div><h1>AMCM 指引通</h1><small>澳門金融管理局監管指引資料庫 · 非官方 · 以官方發佈為準</small></div>
+      <div class="brandl">
+        <div class="logo">指</div>
+        <div><h1>AMCM 指引通</h1><small>澳門金融監管指引資料庫 · 非官方 · 一切以官方發佈為準</small></div>
+      </div>
+      <div class="hbtns">
+        <button onclick="openSettings()">⚙️ AI 設定</button>
+      </div>
     </div>
     <nav>
-      <button data-tab="library" class="active">📚 指引庫</button>
+      <button data-tab="library" class="active">📚 指引大廳</button>
       <button data-tab="search">🔎 全文檢索</button>
       <button data-tab="news">📰 最新動態</button>
     </nav>
   </div>
 </header>
 
-<main class="wrap" id="app">
-  <!-- 指引庫 -->
+<main class="wrap">
+  <!-- ================= 指引大廳 ================= -->
   <section class="panel active" id="tab-library">
-    <div class="searchbar">
-      <select id="sector">
-        <option value="">全部類別</option>
-        <option value="BANKING">銀行業</option>
-        <option value="INSURANCE">保險業</option>
+    <div class="fbar">
+      <select id="fsector" onchange="onSectorChange()"><option value="">行業：全部</option><option value="BANKING">銀行業</option><option value="INSURANCE">保險業</option></select>
+      <select id="fcategory"><option value="">主題：全部</option></select>
+      <select id="fstatus">
+        <option value="">效力：全部</option><option value="IN_FORCE">🟢 現行生效</option>
+        <option value="EXPIRED">⚪ 已失效</option><option value="SUPERSEDED">🔶 已被取代</option>
       </select>
-      <input id="libq" placeholder="按標題 / 文件編號檢索…">
-      <button onclick="loadLibrary()">檢索</button>
+      <select id="fsort">
+        <option value="date_desc">發布日期（新→舊）</option><option value="date_asc">發布日期（舊→新）</option>
+        <option value="number_asc">文件編號（升冪）</option><option value="number_desc">文件編號（降冪）</option>
+        <option value="status">效力狀態優先</option>
+      </select>
+      <input id="fq" placeholder="標題 / 文件編號…">
+      <button class="go" onclick="loadLibrary()">檢索</button>
     </div>
-    <div class="meta" id="libmeta"></div>
+    <div class="meta"><span id="libmeta"></span></div>
     <div id="liblist"></div>
+    <div class="subbox">
+      <h3>📬 訂閱最新監管動態</h3>
+      <p>新指引發布、條文修訂即時摘要推送到您的郵箱（Double Opt-in 驗證，可隨時一鍵退訂）。</p>
+      <div class="subrow">
+        <input id="subemail" type="email" placeholder="請輸入您的工作電子郵箱">
+        <button onclick="subscribe()">訂閱</button>
+      </div>
+      <div class="chkrow">
+        <label><input type="checkbox" id="subbank" checked> 銀行業動態</label>
+        <label><input type="checkbox" id="subins" checked> 保險業動態</label>
+      </div>
+      <div class="submsg" id="submsg"></div>
+    </div>
   </section>
 
-  <!-- 全文检索 -->
+  <!-- ================= 全文检索 ================= -->
   <section class="panel" id="tab-search">
-    <div class="searchbar">
-      <select id="slocale">
-        <option value="">全部語言</option>
-        <option value="zh_TW">繁體中文</option>
-        <option value="en">English</option>
-        <option value="pt_PT">Português</option>
-      </select>
-      <input id="sq" placeholder="輸入關鍵詞，如：資本充足、流動性、反洗錢、liquidity…">
-      <button onclick="doSearch()">檢索</button>
+    <div class="fbar">
+      <select id="slocale"><option value="">語言：全部</option><option value="zh_TW">繁體中文</option><option value="en">English</option><option value="pt_PT">Português</option></select>
+      <select id="sstatus"><option value="">效力：全部</option><option value="IN_FORCE">🟢 現行生效</option><option value="SUPERSEDED">🔶 已被取代</option></select>
+      <input id="sq" placeholder="輸入關鍵詞，如：雲端運算、流動性覆蓋率、客戶盡職審查、liquidity…">
+      <button class="go" onclick="doSearch()">檢索</button>
     </div>
-    <div class="meta" id="smeta"></div>
+    <div class="meta"><span id="smeta"></span></div>
     <div id="slist"></div>
   </section>
 
-  <!-- 动态 -->
+  <!-- ================= 最新动态 ================= -->
   <section class="panel" id="tab-news">
-    <div class="meta">資料來源：AMCM 官網新聞與公告（每日同步）</div>
-    <div id="newslist"></div>
+    <div class="meta"><span>資料來源：AMCM 官網新聞與公告（每日同步）· 點擊卡片可直達相關指引</span></div>
+    <div class="tl" id="newslist"></div>
   </section>
 
-  <!-- 详情 -->
+  <!-- ================= 详情 ================= -->
   <section class="panel" id="tab-detail">
-    <div class="back" onclick="showTab('library')">← 返回指引庫</div>
+    <span class="back" onclick="backFromDetail()">← 返回</span>
+    <div class="anchorbar" id="anchorbar">
+      <span id="anchortxt">已為您定位至命中段落</span>
+      <button onclick="jumpHit(-1)">上一處</button>
+      <button onclick="jumpHit(1)">下一處</button>
+      <button onclick="clearAnchor()" style="margin-left:auto">✕ 關閉</button>
+    </div>
     <div id="detailbox"></div>
   </section>
 </main>
 
+<!-- AI 设置抽屉 -->
+<div class="drawer" id="drawer">
+  <div class="dhead"><span>⚙️ AI 設定與 API 金鑰配置</span><button onclick="closeSettings()">✕</button></div>
+  <div class="dbody">
+    <label>API 提供商</label>
+    <select id="prov" onchange="onProv()">
+      <option value="deepseek">DeepSeek (api.deepseek.com)</option>
+      <option value="openai">OpenAI (api.openai.com)</option>
+      <option value="anthropic">Anthropic (api.anthropic.com)</option>
+      <option value="ollama">Ollama（本機）</option>
+      <option value="custom">自訂相容端點</option>
+    </select>
+    <label>API Key（僅儲存於本機瀏覽器 localStorage，絕不上傳伺服器）</label>
+    <input id="akey" type="password" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx">
+    <label>模型</label>
+    <input id="amodel" placeholder="deepseek-chat">
+    <label>Base URL</label>
+    <input id="abase" placeholder="https://api.deepseek.com/v1">
+    <div class="row2">
+      <button class="test" onclick="testConn()">🧪 測試連線</button>
+      <button onclick="saveSettings()">💾 儲存設定</button>
+      <span class="statustxt" id="connstat"></span>
+    </div>
+    <p style="font-size:12px;color:var(--s400);margin-top:18px;line-height:1.8">
+      · Key 僅存於瀏覽器 localStorage（名稱 AMCM_BYOK_CFG），請求直接從您的瀏覽器發往提供商，不經過本站伺服器。<br>
+      · AI 問答採用嚴格 RAG 約束：僅依據檢索到的 AMCM 指引原文回答，並強制附出處腳註。</p>
+  </div>
+</div>
+<div class="mask" onclick="closeSettings()"></div>
+
+<!-- 通用弹窗 -->
+<div class="modal" id="modal"><div class="mcard" id="modalcard"></div></div>
+
 <footer class="wrap">
-  AMCM 指引通 · Richapps 個人開發項目<br>
-  指引文本由 AMCM 官網公開資料整理，<b>一切以澳門金融管理局官方發佈為準</b> ·
-  <a href="/" >Richapps 首頁</a> · <a href="/downloads">App 下載</a> · <a href="/privacy">隱私政策</a>
+  AMCM 指引通 v2.1 · Richapps 個人開發項目<br>
+  指引文本由 AMCM 官網公開資料整理生成（含 OCR 識別件與機器翻譯件，均於頁面標註），<b>一切以澳門金融管理局官方發佈為準</b><br>
+  <a href="/">Richapps 首頁</a> · <a href="/downloads">App 下載</a> · <a href="/privacy">隱私政策</a>
 </footer>
 
 <script>
 const API = "https://amcm-api.ifcmacao.workers.dev";
 const $ = id => document.getElementById(id);
-let curDetail = null;
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let curDetail=null, curLocale="zh_TW", curPage=1, lastView="library";
+let hits=[], hitIdx=-1;
 
-document.querySelectorAll("nav button").forEach(b =>
-  b.onclick = () => showTab(b.dataset.tab));
-
+/* ============ tabs ============ */
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
 function showTab(t){
   document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));
   document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
   $("tab-"+t).classList.add("active");
   if(t==="news") loadNews();
-  window.scrollTo(0,0);
+  window.scrollTo({top:0});
 }
 $("sq").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
-$("libq").addEventListener("keydown",e=>{if(e.key==="Enter")loadLibrary()});
+$("fq").addEventListener("keydown",e=>{if(e.key==="Enter")loadLibrary()});
 
-const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
+/* ============ library ============ */
+let CATS={BANKING:[],INSURANCE:[]};
+async function loadCats(){
+  if(CATS.BANKING.length) return;
+  const d=await (await fetch(`${API}/api/guidelines?size=1`)).json();
+  (d.categories||[]).forEach(c=>{ (CATS[c.sector]=CATS[c.sector]||[]).push(c.category); });
+}
+async function onSectorChange(){
+  await loadCats();
+  const s=$("fsector").value, sel=$("fcategory");
+  sel.innerHTML=`<option value="">主題：全部</option>`;
+  (s?CATS[s]:[...new Set([...CATS.BANKING,...CATS.INSURANCE])]).forEach(c=>{
+    sel.insertAdjacentHTML("beforeend",`<option>${esc(c)}</option>`);
+  });
+}
+const LOCL={zh_TW:"繁中",zh_CN:"簡中",en:"英文",pt_PT:"葡文"};
+function pdfBtn(g){
+  const btn=(label,href)=>href?`<a class="pdf" href="${href}" target="_blank" rel="noopener">🌐 ${label} PDF (cdn.amcm.gov.mo)</a>`:"";
+  return btn("官方原文·繁中",g.pdf_tc)||btn("官方原文·簡中",g.pdf_zh_cn)||btn("官方原文·葡文",g.pdf_pt)||btn("官方原文·英文",g.pdf_en);
+}
+function statusBadge(g){
+  if(g.status==="SUPERSEDED")
+    return `<span class="badge-status SUPERSEDED" title="已被取代" onclick="event.stopPropagation();alert('本文件已被取代。\\n取代文件：第 ${esc(g.superseded_by)} 號\\n可在指引大廳按編號檢索查看。')">🔶 已被取代（第 ${esc(g.superseded_by||"?")} 號取代）</span>`;
+  return `<span class="badge-status IN_FORCE">🟢 現行生效</span>`;
+}
 async function loadLibrary(){
-  const sector=$("sector").value, q=$("libq").value.trim();
-  const u=`${API}/api/guidelines?size=100`+(sector?`&sector=${sector}`:"")+(q?`&q=${encodeURIComponent(q)}`:"");
+  const p=new URLSearchParams();
+  if($("fsector").value)p.set("sector",$("fsector").value);
+  if($("fcategory").value)p.set("category",$("fcategory").value);
+  if($("fstatus").value)p.set("status",$("fstatus").value);
+  p.set("sort",$("fsort").value);
+  if($("fq").value.trim())p.set("q",$("fq").value.trim());
+  p.set("size","200");
   $("libmeta").textContent="載入中…";
-  const d=await (await fetch(u)).json();
+  const d=await (await fetch(`${API}/api/guidelines?${p}`)).json();
   if(!d.ok){$("libmeta").textContent="載入失敗";return}
-  $("libmeta").textContent=`共 ${d.total} 份指引`;
-  $("liblist").innerHTML=d.data.map(g=>`
-    <div class="gcard" onclick="openDetail(${g.id})">
-      <h3>${g.doc_number?`<span class="no">第 ${esc(g.doc_number)} 號</span>`:""}${esc(g.title_tc||g.title_en)}</h3>
+  $("libmeta").innerHTML=`共 <b>${d.total}</b> 份指引`;
+  $("liblist").innerHTML=d.data.map(g=>{
+    const date=g.doc_year?`編號年份：${g.doc_year}`:"官網未標年份";
+    return `<div class="gcard" onclick="openDetail(${g.id})">
+      <div class="gtop">
+        <span class="gcat">${g.sector==="BANKING"?"銀行業":"保險業"} · ${esc(g.category||"未分類")}</span>
+        <span class="gdate">${date}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap">
+        <div>
+          <div class="gno">${g.doc_number?`第 ${esc(g.doc_number)} 號`:"（官網未標編號）"}</div>
+          <div class="gtitle">${esc(g.title_tc||g.title_en)}</div>
+        </div>
+        ${statusBadge(g)}
+      </div>
+      ${g.summary?`<div class="gsumm">摘要：${esc(g.summary)}</div>`:""}
       <div class="badges">
-        <span class="tag sector">${g.sector==="BANKING"?"銀行業":"保險業"}</span>
-        ${g.category?`<span class="tag">${esc(g.category)}</span>`:""}
         ${g.pages?`<span class="tag">${g.pages} 頁文本</span>`:""}
         ${g.has_ocr?`<span class="tag ocr">OCR 件</span>`:""}
         ${g.has_mt?`<span class="tag mt">含機器翻譯</span>`:""}
       </div>
-    </div>`).join("") || `<div class="empty">沒有符合的指引</div>`;
+      <div class="gactions" onclick="event.stopPropagation()">
+        <button class="view" onclick="openDetail(${g.id})">🔗 查看內文與 AI 分析</button>
+        ${pdfBtn(g)}
+      </div>
+    </div>`}).join("")||`<div class="empty">沒有符合條件的指引</div>`;
 }
 
+/* ============ search ============ */
 async function doSearch(){
-  const q=$("sq").value.trim(), loc=$("slocale").value;
-  if(!q) return;
+  const q=$("sq").value.trim(); if(!q)return;
+  const p=new URLSearchParams({q,limit:"20"});
+  if($("slocale").value)p.set("locale",$("slocale").value);
+  if($("sstatus").value)p.set("status",$("sstatus").value);
   $("smeta").textContent="檢索中…";
-  const u=`${API}/api/search?q=${encodeURIComponent(q)}&limit=20`+(loc?`&locale=${loc}`:"");
-  const d=await (await fetch(u)).json();
+  const d=await (await fetch(`${API}/api/search?${p}`)).json();
   if(!d.ok){$("smeta").textContent="檢索失敗";return}
-  $("smeta").textContent=`命中 ${d.total} 個頁面（顯示前 ${d.data.length} 條）`;
-  $("slist").innerHTML=d.data.map(r=>`
+  $("smeta").innerHTML=`命中 <b>${d.total}</b> 個頁面（顯示前 ${d.data.length} 條，點擊標題定位原文）`;
+  $("slist").innerHTML=d.data.map((r,i)=>`
     <div class="sr">
-      <div class="path" onclick="openDetail(${r.gid})">${esc(r.title_tc||r.title_en)} ▸</div>
+      <div class="path" onclick="openDetail(${r.gid},{q:${JSON.stringify(q)},chunk:${r.page_number===null?-1:-1},page:${r.page_number},row:${i}})">
+        ${esc(r.title_tc||r.title_en)} ${r.doc_number?`· 第 ${esc(r.doc_number)} 號`:""} ▸
+      </div>
       <div class="snip">${r.snip}…</div>
       <div class="badges" style="margin-top:8px">
         <span class="tag">第 ${r.page_number} 頁</span>
-        <span class="tag">${r.locale}</span>
-        ${r.doc_number?`<span class="tag">第 ${esc(r.doc_number)} 號</span>`:""}
-        ${r["pdf_"+(r.locale==="en"?"en":r.locale==="pt_PT"?"pt":"tc")]?`<a class="tag" href="${r["pdf_"+(r.locale==="en"?"en":r.locale==="pt_PT"?"pt":"tc")]}" target="_blank" rel="noopener">官方 PDF ↗</a>`:""}
+        <span class="tag">${LOCL[r.locale]||r.locale}</span>
+        ${r.category?`<span class="tag">${esc(r.category)}</span>`:""}
+        ${r.status==="SUPERSEDED"?`<span class="badge-status SUPERSEDED">🔶 已被取代</span>`:`<span class="badge-status IN_FORCE">🟢</span>`}
+        <a class="tag link" href="${r["pdf_"+(r.locale==="en"?"en":r.locale==="pt_PT"?"pt":"tc")]||r.pdf_tc||"#"}" target="_blank" rel="noopener" onclick="event.stopPropagation()">官方 PDF ↗</a>
       </div>
-    </div>`).join("") || `<div class="empty">沒有命中的頁面</div>`;
+    </div>`).join("")||`<div class="empty">沒有命中的頁面，試試更短的關鍵詞</div>`;
 }
 
+/* ============ news ============ */
 async function loadNews(){
   $("newslist").innerHTML=`<div class="empty">載入中…</div>`;
-  const d=await (await fetch(`${API}/api/news?limit=50`)).json();
+  const d=await (await fetch(`${API}/api/news?limit=30`)).json();
   $("newslist").innerHTML=(d.data||[]).map(n=>`
-    <div class="newsitem">
-      <div>${esc(n.title)}</div>
-      <div class="d">${esc(n.published||"")}</div>
-    </div>`).join("") || `<div class="empty">暫無動態</div>`;
+    <div class="tlitem">
+      <div class="gtop">
+        <span class="evtag ${esc(n.event_type)}">[${esc(n.event_type)}]</span>
+        <span class="gdate">${esc((n.published||"").slice(0,10))}</span>
+      </div>
+      <div class="gtitle" style="margin-top:6px">${esc(n.title)}</div>
+      <div class="badges">
+        <span class="tag">${esc(n.cat_title||n.cat_slug||"")}</span>
+        ${n.slug?`<span class="tag link" onclick="aiAskFromNews(${JSON.stringify(n.title).replace(/"/g,'&quot;')})">🤖 AI 解讀此動態</span>`:""}
+      </div>
+    </div>`).join("")||`<div class="empty">暫無動態</div>`;
+}
+function aiAskFromNews(title){
+  openSettings();
+  $("connstat").innerHTML="請先配置 AI 後，在指引內文頁對此動態提問";
 }
 
-async function openDetail(id){
+/* ============ detail + highlight anchor ============ */
+async function openDetail(id, hl){
+  lastView = document.querySelector("nav button.active").dataset.tab;
   showTab("detail");
   $("detailbox").innerHTML=`<div class="empty">載入中…</div>`;
+  $("anchorbar").style.display="none";
   const d=await (await fetch(`${API}/api/guidelines/${id}`)).json();
   if(!d.ok){$("detailbox").innerHTML=`<div class="empty">載入失敗</div>`;return}
   curDetail=d.data;
   const g=d.data;
   const locs=[...new Set(g.chunks.map(c=>c.locale))];
-  const names={zh_TW:"繁體中文",zh_CN:"簡體中文",en:"English",pt_PT:"Português"};
   const links=[];
-  if(g.pdf_tc)links.push(["官方原文 · 繁中",g.pdf_tc,""]);
-  if(g.pdf_zh_cn)links.push(["官方原文 · 簡中",g.pdf_zh_cn,""]);
-  if(g.pdf_pt)links.push(["官方原文 · 葡文",g.pdf_pt,""]);
-  if(g.pdf_en)links.push(["官方原文 · 英文",g.pdf_en,"en"]);
+  const pdt=(l,h)=>h&&links.push([l,h]);
+  pdt("官方原文·繁中",g.pdf_tc);pdt("官方原文·簡中",g.pdf_zh_cn);pdt("官方原文·葡文",g.pdf_pt);pdt("官方原文·英文",g.pdf_en);
+  const flags=[];
+  if(g.chunks.some(c=>c.is_ocr===2))flags.push("部分內容為 OCR 識別件");
+  if(g.chunks.some(c=>c.is_machine_translated))flags.push("部分內容為機器翻譯件");
   $("detailbox").innerHTML=`
     <div class="detail">
-      <h2>${g.doc_number?`第 ${esc(g.doc_number)} 號 · `:""}${esc(g.title_tc||g.title_en)}</h2>
-      ${g.title_en&&g.title_tc?`<div style="color:var(--muted);font-size:14px">${esc(g.title_en)}</div>`:""}
-      <div class="badges" style="margin:10px 0">
-        <span class="tag sector">${g.sector==="BANKING"?"銀行業":"保險業"}</span>
-        ${g.category?`<span class="tag">${esc(g.category)}</span>`:""}
-        ${g.summary?`<span class="tag">${esc(g.summary)}</span>`:""}
+      <div class="gtop">
+        <span class="gcat">${g.sector==="BANKING"?"銀行業":"保險業"} · ${esc(g.category||"")}</span>
+        <span class="gdate">${g.doc_year?`編號年份：${g.doc_year}`:""}</span>
       </div>
-      <div class="notice">⚠ 本文檔文本僅供檢索參考（${g.chunks.some(c=>c.is_ocr===2)?"部分為 OCR 識別件，":""}以官方發佈的 PDF 原文為準）。下載鏈接均指向 AMCM 官網。</div>
-      <div class="dl">${links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener" class="${l[2]}">⬇ ${l[0]}</a>`).join("")}
-      ${g.url?`<a href="${g.url}" target="_blank" rel="noopener">↗ 官網頁面</a>`:""}</div>
-      <div class="localebar">${locs.map((l,i)=>`<button class="${i===0?"on":""}" data-l="${l}" onclick="pickLocale('${l}',this)">${names[l]||l}</button>`).join("")}</div>
+      <h2 style="margin-top:8px">${g.doc_number?`第 ${esc(g.doc_number)} 號 · `:""}${esc(g.title_tc||g.title_en)}</h2>
+      ${g.title_en&&g.title_tc&&g.title_en!==g.title_tc?`<div style="color:var(--s500);font-size:13.5px">${esc(g.title_en)}</div>`:""}
+      <div class="badges" style="margin:12px 0" id="dstatus">${statusBadge(g)} ${g.summary?`<span class="tag">${esc(g.summary)}</span>`:""}</div>
+      <div class="notice">⚠ ${flags.length?"本頁面文本"+flags.join("、")+"，":""}內容僅供檢索參考，<b>一切以官方 PDF 原文為準</b>。下載鏈接均指向 AMCM 官網（cdn.amcm.gov.mo）。</div>
+      <div class="dl">
+        ${links.map(l=>`<a class="pdf" href="${l[1]}" target="_blank" rel="noopener">⬇ ${l[0]}</a>`).join("")}
+        ${g.url?`<a class="site" href="${g.url}" target="_blank" rel="noopener">↗ 官網頁面</a>`:""}
+      </div>
+      <div class="localebar">${locs.map((l,i)=>`<button class="${i===0?"on":""}" data-l="${l}" onclick="pickLocale('${l}',this)">${LOCL[l]||l}</button>`).join("")}</div>
       <div class="pagenav">
         <button id="prev" onclick="flip(-1)">‹</button>
-        <span id="pno" style="font-size:14px;color:var(--muted)"></span>
+        <span class="pno" id="pno"></span>
         <button id="next" onclick="flip(1)">›</button>
       </div>
       <div class="ptext" id="ptext"></div>
       <div class="pmeta" id="pmeta"></div>
+      ${aiPanelHtml()}
     </div>`;
+  bindAiPanel();
   pickLocale(locs[0]);
+  if(hl&&hl.q){ await locateHighlight(hl.q, hl.page); }
 }
-
-let curLocale="zh_TW", curPage=1;
+function aiPanelHtml(){
+  const cfg=getCfg();
+  const ready=cfg&&cfg.key;
+  return `<div class="aipanel">
+    <div class="aihead"><span>🤖 AI 合規助手（BYOK）</span><small>${ready?"已配置："+esc(cfg.model):"未配置 · 點右上角 ⚙️ 設定 API Key"}</small></div>
+    <div class="aibody">
+      <div class="ainput">
+        <input id="aiq" placeholder="針對本指引提問，如：本指引對雲端運算的風險控制有哪些要求？">
+        <button id="aigo" onclick="aiAsk()">分析</button>
+      </div>
+      <div class="aiout" id="aiout"></div>
+      <div class="aihint">AI 僅依據本指引及全庫檢索到的 AMCM 指引原文回答，並附 [指引編號，第X頁] 出處；檢索不足時將明確提示。回答不構成法律意見。</div>
+    </div>
+  </div>`;
+}
 function pickLocale(l,btn){
   curLocale=l; curPage=1;
   document.querySelectorAll(".localebar button").forEach(b=>b.classList.toggle("on",b.dataset.l===l));
   renderPage();
 }
 function flip(d){
-  const max=curDetail.chunks.filter(c=>c.locale===curLocale).length;
-  curPage=Math.min(Math.max(curPage+d,1),max);
+  const pages=pagesOf();
+  curPage=Math.min(Math.max(curPage+d,1),pages.length);
   renderPage();
 }
+function pagesOf(){return curDetail.chunks.filter(c=>c.locale===curLocale).sort((a,b)=>a.page_number-b.page_number)}
 function renderPage(){
-  const pages=curDetail.chunks.filter(c=>c.locale===curLocale).sort((a,b)=>a.page_number-b.page_number);
+  const pages=pagesOf();
   const p=pages[curPage-1];
   $("pno").textContent=`第 ${curPage} / ${pages.length} 頁`;
-  $("prev").disabled=curPage<=1; $("next").disabled=curPage>=pages.length;
+  $("prev").disabled=curPage<=1;$("next").disabled=curPage>=pages.length;
   $("ptext").textContent=p?p.content:"（此頁無文本）";
-  const flags=[];
-  if(p&&p.is_ocr===2)flags.push("OCR 識別件");
-  if(p&&p.is_machine_translated)flags.push("機器翻譯件 · 以官方原文為準");
-  if(p&&p.needs_review)flags.push("識別置信度較低，請對照原文");
-  $("pmeta").textContent=flags.join(" · ");
+  const f=[];
+  if(p&&p.is_ocr===2)f.push("OCR 識別件");
+  if(p&&p.is_machine_translated)f.push("機器翻譯件 · 以官方原文為準");
+  if(p&&p.needs_review)f.push("識別置信度較低，請對照原文");
+  $("pmeta").textContent=f.join(" · ");
+}
+async function locateHighlight(term, page){
+  const raw=term.replace(/["'*()]/g," ");
+  const re=new RegExp("("+raw.split(/\s+/).filter(Boolean).map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")","gi");
+  // 在全文中找命中页
+  let target=null;
+  const pages=pagesOf();
+  if(page){ target=pages.find(x=>x.page_number===page&&re.test(x.content))||pages.find(x=>x.page_number===page); }
+  if(!target){ for(const pg of pages){ if(re.test(pg.content)){target=pg;break} } }
+  if(!target){ for(const l of [...new Set(curDetail.chunks.map(c=>c.locale))]){
+      const alt=curDetail.chunks.filter(c=>c.locale===l).find(x=>re.test(x.content));
+      if(alt){ pickLocale(alt.locale); target=curDetail.chunks.filter(c=>c.locale===l).find(x=>re.test(x.content)); break } } }
+  if(!target)return;
+  const pt=$("ptext");
+  const orig=target.content;
+  pt.innerHTML=esc(orig).replace(re,m=>`<span class="search-highlight-active">${m}</span>`);
+  $("pno").textContent=`第 ${target.page_number} / ${pages.length} 頁（命中）`;
+  hits=pt.querySelectorAll(".search-highlight-active");
+  hitIdx=-1;
+  $("anchorbar").style.display="flex";
+  $("anchortxt").textContent=`已為您定位至第 ${target.page_number} 頁命中段落，共 ${hits.length} 處`;
+  requestAnimationFrame(()=>pt.querySelector(".search-highlight-active")?.scrollIntoView({behavior:"smooth",block:"center"}));
+}
+function jumpHit(d){
+  if(!hits.length)return;
+  hitIdx=(hitIdx+d+hits.length)%hits.length;
+  hits[hitIdx].scrollIntoView({behavior:"smooth",block:"center"});
+}
+function clearAnchor(){
+  $("anchorbar").style.display="none";
+  renderPage();
+}
+function backFromDetail(){
+  showTab(lastView==="search"?"search":"library");
+  if(lastView==="search")$("sq").focus();
 }
 
+/* ============ BYOK AI ============ */
+function getCfg(){
+  try{return JSON.parse(localStorage.getItem("AMCM_BYOK_CFG")||"null")}catch(e){return null}
+}
+const PROV_DEFAULTS={
+  deepseek:{base:"https://api.deepseek.com/v1",model:"deepseek-chat",models:["deepseek-chat","deepseek-reasoner"]},
+  openai:{base:"https://api.openai.com/v1",model:"gpt-4o-mini",models:["gpt-4o","gpt-4o-mini"]},
+  anthropic:{base:"https://api.anthropic.com",model:"claude-sonnet-4-20250514",models:["claude-sonnet-4-20250514","claude-3-5-haiku-20241022"]},
+  ollama:{base:"http://localhost:11434/v1",model:"llama3",models:["llama3","qwen2.5"]},
+  custom:{base:"",model:"",models:[]},
+};
+function onProv(){
+  const d=PROV_DEFAULTS[$("prov").value];
+  $("abase").value=d.base;$("amodel").value=d.model;
+}
+function openSettings(){
+  const cfg=getCfg();
+  if(cfg){$("prov").value=cfg.prov;$("akey").value=cfg.key;$("amodel").value=cfg.model;$("abase").value=cfg.base}
+  else onProv();
+  $("drawer").classList.add("open");
+}
+function closeSettings(){$("drawer").classList.remove("open")}
+function saveSettings(){
+  const cfg={prov:$("prov").value,key:$("akey").value.trim(),model:$("amodel").value.trim(),base:$("abase").value.trim().replace(/\/$/,"")};
+  localStorage.setItem("AMCM_BYOK_CFG",JSON.stringify(cfg));
+  $("connstat").innerHTML=`<span style="color:var(--green)">🟢 已儲存（僅存於本機）</span>`;
+  if(curDetail)$("detailbox").querySelector(".aipanel .aihead small")&&(document.querySelector(".aihead small").textContent="已配置："+cfg.model);
+}
+async function testConn(){
+  const cfg={prov:$("prov").value,key:$("akey").value.trim(),model:$("amodel").value.trim(),base:$("abase").value.trim().replace(/\/$/,"")};
+  const t0=performance.now();
+  try{
+    if(cfg.prov==="anthropic"){
+      const r=await fetch(cfg.base+"/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:cfg.model,max_tokens:8,messages:[{role:"user",content:"hi"}]})});
+      if(!r.ok)throw new Error((await r.text()).slice(0,120));
+    }else{
+      const r=await fetch(cfg.base+"/chat/completions",{method:"POST",headers:{"content-type":"application/json","authorization":"Bearer "+cfg.key},body:JSON.stringify({model:cfg.model,messages:[{role:"user",content:"hi"}],max_tokens:8})});
+      if(!r.ok)throw new Error((await r.text()).slice(0,120));
+    }
+    $("connstat").innerHTML=`<span style="color:var(--green)">🟢 連線成功，延遲 ${Math.round(performance.now()-t0)}ms</span>`;
+    saveSettings();
+  }catch(e){ $("connstat").innerHTML=`<span style="color:#dc2626">🔴 連線失敗：${esc(String(e.message||e).slice(0,80))}</span>`; }
+}
+const RAG_SYSTEM=`你是一位極度嚴謹的澳門金融監管（AMCM）合規專家。你的任務是嚴格根據背景資訊（Context）中提供的 AMCM 官方指引條文，回答用戶的問題。
+【必須遵守的鐵律】：
+1. 你的回答必須 100% 嚴格依據背景資訊中的 AMCM 指引原文及澳門金融常規理解。
+2. 切勿產生任何幻覺，切勿引用背景資訊中未提及的外部法規或自行推測。若背景資訊不足以回答問題，請直接回答：「根據現有 AMCM 檢索到的指引，未包含此問題的明確規定，建議直接查閱上位法《金融體系法律制度》或諮詢 AMCM 官方。」
+3. 每一段分析、結論或合規要求，必須在句末強制加上出處腳註，格式為：[指引編號，第X頁，章節名稱]。
+4. 若指引內容屬於機器翻譯件，請在回答末尾提示：「部分參考內容為機器翻譯件，請以官方葡文/英文原文為準。」
+5. 使用繁體中文回答。`;
+async function aiAsk(){
+  const cfg=getCfg();
+  if(!cfg||!cfg.key){openSettings();return}
+  const q=$("aiq").value.trim(); if(!q)return;
+  const btn=$("aigo"),out=$("aiout");
+  btn.disabled=true;out.style.display="block";out.textContent="檢索指引庫…";
+  // RAG：检索问题相关 chunk
+  const sres=await (await fetch(`${API}/api/search?q=${encodeURIComponent(q)}&limit=6`)).json();
+  const own=(curDetail.chunks||[]).slice(0,3).map(c=>`[第 ${c.page_number} 頁] ${c.content.slice(0,600)}`);
+  let ctx="", meta=[], hasMt=false;
+  if(sres.ok)for(const r of sres.data){
+    const clean=r.content.replace(/\s+/g," ").slice(0,600);
+    ctx+=`【${r.doc_number||r.title_tc} · 第 ${r.page_number} 頁 · ${LOCL[r.locale]||r.locale}】\n${clean}\n\n`;
+    meta.push(`[指引編號 ${r.doc_number||"未標"}，第${r.page_number}頁]`);
+    if(r.locale!=="zh_TW"&&r.locale!=="zh_CN")hasMt=true;
+  }
+  ctx+="\n【當前指引】"+(curDetail.doc_number||"")+` `+(curDetail.title_tc||"")+"\n"+own.join("\n");
+  if(hasMt)ctx+="\n（註：部分背景內容為機器翻譯件）";
+  out.textContent="AI 分析中…（首次回應可能需數秒）";
+  const userMsg=`背景資訊（Context）：
+${ctx}
+
+用戶問題：${q}`;
+  try{
+    let answer="";
+    if(cfg.prov==="anthropic"){
+      const r=await fetch(cfg.base+"/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:cfg.model,max_tokens:2000,system:RAG_SYSTEM,messages:[{role:"user",content:userMsg}]})});
+      const j=await r.json();
+      if(!r.ok)throw new Error(j.error?.message||r.status);
+      answer=j.content?.[0]?.text||"";
+    }else{
+      const r=await fetch(cfg.base+"/chat/completions",{method:"POST",headers:{"content-type":"application/json","authorization":"Bearer "+cfg.key},body:JSON.stringify({model:cfg.model,messages:[{role:"system",content:RAG_SYSTEM},{role:"user",content:userMsg}],max_tokens:2000})});
+      const j=await r.json();
+      if(!r.ok)throw new Error(j.error?.message||r.status);
+      answer=j.choices?.[0]?.message?.content||"";
+    }
+    out.textContent=answer+(hasMt?"\n\n⚠ 部分參考內容為機器翻譯件，請以官方葡文/英文原文為準。":"");
+  }catch(e){
+    out.textContent="❌ 請求失敗："+String(e.message||e).slice(0,200)+"\n\n請檢查 AI 設定（Key/模型/Base URL）。若使用 Ollama，請確認本機服務已啟動並允許跨域。";
+  }
+  btn.disabled=false;
+}
+
+/* ============ subscribe ============ */
+async function subscribe(){
+  const email=$("subemail").value.trim(), msg=$("submsg");
+  const sectors=[];
+  if($("subbank").checked)sectors.push("BANKING");
+  if($("subins").checked)sectors.push("INSURANCE");
+  msg.className="submsg";msg.textContent="";
+  const r=await fetch(`${API}/api/subscribe`,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email,sectors})});
+  const d=await r.json();
+  if(d.ok){msg.className="submsg ok";msg.textContent="✅ "+d.message}
+  else{msg.className="submsg bad";msg.textContent="❌ "+(d.error||"訂閱失敗")}
+}
+
+/* ============ confirm / unsubscribe landing ============ */
+(async function handleLanding(){
+  const params=new URLSearchParams(location.search);
+  const token=params.get("token");
+  const path=location.pathname;
+  if(!token)return;
+  let action=null;
+  if(path.includes("confirm-subscription"))action="confirm";
+  else if(path.includes("unsubscribe"))action="unsub";
+  if(!action)return;
+  const r=await fetch(`${API}/api/${action==="confirm"?"confirm-subscription":"unsubscribe"}?token=${encodeURIComponent(token)}`);
+  const html=await r.text();
+  const ok=html.includes("成功");
+  const doc=new DOMParser().parseFromString(html,"text/html");
+  const h=doc.querySelector("h1")?.textContent||"";
+  const p=doc.querySelector("p")?.textContent||"";
+  history.replaceState(null,"","/amcm/");
+  $("modalcard").innerHTML=`<div class="ok">${action==="confirm"?(ok?"🟢":"⚠️"):"✅"}</div><h2>${esc(h)}</h2><p>${esc(p)}</p><a href="/amcm/" style="color:var(--amber);font-weight:700">返回 AMCM 指引通</a>`;
+  $("modal").style.display="flex";
+  loadLibrary();
+})();
+
+/* init */
+onSectorChange();
 loadLibrary();
 </script>
 </body>

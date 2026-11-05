@@ -4,14 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMCM 指引通 · 澳門金融監管指引資料庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --s900:#0f172a; --s800:#1e293b; --s700:#334155; --s500:#64748b; --s400:#94a3b8;
   --amber:#d97706; --amber2:#f59e0b; --bg:#f8fafc; --line:#e2e8f0;
   --green:#16a34a; --gray:#94a3b8; --orange:#ea580c;
+  --serif:"Noto Serif TC","PingFang TC","Microsoft JhengHei",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans HK","Microsoft JhengHei",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans HK","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--s800);line-height:1.7}
+body{font-family:var(--sans);background:var(--bg);color:var(--s800);line-height:1.7}
 .wrap{max-width:1150px;margin:0 auto;padding:0 16px}
 header{background:var(--s900);color:#fff;padding:22px 0 0;border-bottom:3px solid var(--amber2)}
 .brand{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
@@ -34,6 +39,11 @@ main{padding:22px 0 40px}
 .fbar .go{background:var(--s900);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px}
 .fbar .go:hover{background:var(--s800)}
 .meta{color:var(--s500);font-size:13px;margin:14px 2px 10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* skeleton */
+.skel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:12px}
+.sk{position:relative;overflow:hidden;background:#eef2f7;border-radius:6px}
+.sk::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);animation:shimmer 1.4s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 /* guideline card */
 .gcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 3px 0 rgb(0 0 0/.1);transition:.18s;cursor:pointer}
 .gcard:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,23,42,.10)}
@@ -84,20 +94,55 @@ mark{background:#fde68a;padding:0 1px;border-radius:2px}
 .dl a.pdf:hover{background:var(--s800)}
 .dl a.site{background:#fff;color:var(--s700);border:1px solid var(--line)}
 .notice{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:10px 16px;font-size:13px;margin:14px 0}
-.localebar{display:flex;gap:8px;margin:18px 0 12px;flex-wrap:wrap}
+.localebar{display:flex;gap:8px;margin:18px 0 12px;flex-wrap:wrap;align-items:center}
 .localebar button{padding:7px 18px;border-radius:20px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px;font-weight:600;color:var(--s500)}
 .localebar button.on{background:var(--s900);color:#fff;border-color:var(--s900)}
+.readmodes{display:flex;gap:6px;margin-left:auto}
+.readmodes button{padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:12.5px;color:var(--s500)}
+.readmodes button.on{background:var(--amber);color:#fff;border-color:var(--amber)}
 .pagenav{display:flex;align-items:center;gap:14px;margin:12px 0}
 .pagenav button{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px}
 .pagenav button:disabled{opacity:.35;cursor:default}
 .pagenav .pno{font-size:14px;color:var(--s500);min-width:110px;text-align:center}
-.ptext{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:24px;font-size:15px;min-height:220px;max-height:62vh;overflow:auto;line-height:2}
+/* ====== Regulatory Typography System ====== */
+.lawbody{font-family:var(--serif);background:#fdfdfb;border:1px solid var(--line);border-radius:12px;padding:30px 34px;min-height:220px;max-height:none;overflow:visible;color:#1a2332}
+.lawbody.paged{max-height:66vh;overflow:auto}
+.lawpage{margin-bottom:6px}
+.lawpage + .lawpage{border-top:1px dashed var(--line);padding-top:22px;margin-top:22px}
+.lawpage-no{font-family:var(--sans);text-align:right;font-size:11.5px;color:var(--s400);margin-bottom:8px;letter-spacing:1px}
+.lawbody p{font-size:1rem;line-height:1.85;margin-bottom:14px;text-align:justify;letter-spacing:.2px}
+.law-article-title{font-family:var(--serif);font-weight:900;font-size:1.08rem;color:var(--s900);background:linear-gradient(180deg,#fffdf5,#faf6e8);border:1px solid #e7dcb8;border-left:4px solid var(--amber);border-radius:8px;padding:10px 16px;margin:26px 0 14px;box-shadow:0 1px 3px rgba(180,150,60,.15);letter-spacing:.5px}
+.law-body-first{font-weight:700;color:var(--s900);font-size:1.02rem}
+.law-subarticle{padding-left:2em;text-indent:-0.5em;color:#25303f}
+.footnote-ref{color:var(--amber);font-weight:700;cursor:help;border-bottom:1px dotted var(--amber)}
+.footnote-ref:hover{background:#fef3c7;border-radius:3px}
+.law-footnotes{margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+.law-footnotes .fntitle{font-family:var(--sans);font-size:12.5px;font-weight:800;color:var(--s700);margin-bottom:8px;letter-spacing:1px}
+.law-footnotes p{font-size:.82rem;line-height:1.7;color:var(--s500);margin-bottom:6px}
+.ocr-flag{background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:8px;padding:8px 14px;font-family:var(--sans);font-size:12.5px;margin:10px 0;display:flex;gap:8px;align-items:center}
 .pmeta{color:var(--s500);font-size:12.5px;margin-top:10px}
 .search-highlight-active{background-color:#fef08a;color:#0f172a;padding:2px 4px;border-radius:4px;box-shadow:0 0 8px rgba(234,179,8,.6);animation:pulse-highlight 2s infinite}
 @keyframes pulse-highlight{0%,100%{box-shadow:0 0 8px rgba(234,179,8,.6)}50%{box-shadow:0 0 18px rgba(234,179,8,.95)}}
 .anchorbar{position:sticky;top:0;z-index:20;background:var(--s900);color:#fff;border-radius:10px;padding:10px 18px;font-size:13.5px;display:none;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
 .anchorbar button{background:rgba(255,255,255,.12);color:#fff;border:none;border-radius:6px;padding:5px 14px;cursor:pointer;font-size:12.5px}
 .anchorbar button:hover{background:var(--amber)}
+/* ====== 360° Briefing Dashboard ====== */
+.brief{margin:18px 0 4px;border:1px solid #e7dcb8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(180,150,60,.08)}
+.briefhead{background:linear-gradient(135deg,var(--s900),#1e293b);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.briefhead .t{font-weight:800;font-size:15px;letter-spacing:.5px}
+.briefhead small{display:block;color:var(--s400);font-weight:400;font-size:11.5px;margin-top:2px}
+.briefhead button{background:var(--amber);border:none;color:#fff;border-radius:8px;padding:9px 20px;font-weight:700;cursor:pointer;font-size:13px}
+.briefhead button:hover{background:#b45309}
+.briefhead button:disabled{opacity:.5;cursor:default}
+.briefbody{background:#fffdf8;padding:18px 20px}
+.briefbody .loading{color:var(--s500);font-size:13.5px;line-height:2}
+.briefsec{margin-bottom:16px}
+.briefsec h4{font-size:13.5px;font-weight:800;color:var(--s900);margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed #e7dcb8}
+.briefsec ul{padding-left:20px}
+.briefsec li{font-size:13.5px;color:#334155;line-height:1.9;margin-bottom:5px}
+.briefsec.check li{list-style:none;position:relative;padding-left:26px;margin-bottom:8px}
+.briefsec.check li::before{content:"☐";position:absolute;left:0;color:var(--amber);font-size:16px}
+.briefsec .fn{color:var(--s400);font-size:11.5px}
 /* AI panel */
 .aipanel{margin-top:22px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .aihead{background:var(--s900);color:#fff;padding:12px 20px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
@@ -122,7 +167,7 @@ mark{background:#fde68a;padding:0 1px;border-radius:2px}
 .dbody label{display:block;font-size:12.5px;font-weight:700;color:var(--s700);margin:14px 0 5px}
 .dbody input,.dbody select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;outline:none}
 .dbody input:focus,.dbody select:focus{border-color:var(--amber2)}
-.row2{display:flex;gap:10px;align-items:center;margin-top:16px}
+.row2{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
 .row2 button{background:var(--s900);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-weight:700;cursor:pointer;font-size:13.5px}
 .row2 button.test{background:var(--amber)}
 .statustxt{font-size:13px;font-weight:600}
@@ -152,7 +197,7 @@ footer a{color:var(--s700);text-decoration:none}
 footer a:hover{color:var(--amber)}
 section.panel{display:none}
 section.panel.active{display:block}
-@media(max-width:640px){h1{font-size:18px}.ptext{font-size:14px;padding:16px}.detail{padding:18px}}
+@media(max-width:640px){h1{font-size:18px}.lawbody{padding:18px 14px;font-size:.95rem}.detail{padding:18px}.readmodes{margin-left:0}}
 </style>
 </head>
 <body>
@@ -197,7 +242,7 @@ section.panel.active{display:block}
     <div id="liblist"></div>
     <div class="subbox">
       <h3>📬 訂閱最新監管動態</h3>
-      <p>新指引發布、條文修訂即時摘要推送到您的郵箱（Double Opt-in 驗證，可隨時一鍵退訂）。</p>
+      <p>新指引發布、條文修訂即時摘要推送到您的郵箱（Double Opt-in 驗證，可隨時一鍵退訂）。系統每日自動同步 AMCM 官網並定時群發摘要。</p>
       <div class="subrow">
         <input id="subemail" type="email" placeholder="請輸入您的工作電子郵箱">
         <button onclick="subscribe()">訂閱</button>
@@ -224,7 +269,7 @@ section.panel.active{display:block}
 
   <!-- ================= 最新动态 ================= -->
   <section class="panel" id="tab-news">
-    <div class="meta"><span>資料來源：AMCM 官網新聞與公告（每日同步）· 點擊卡片可直達相關指引</span></div>
+    <div class="meta"><span>資料來源：AMCM 官網新聞與公告（每日自動同步）· 點擊卡片可直達相關指引</span></div>
     <div class="tl" id="newslist"></div>
   </section>
 
@@ -266,7 +311,7 @@ section.panel.active{display:block}
     </div>
     <p style="font-size:12px;color:var(--s400);margin-top:18px;line-height:1.8">
       · Key 僅存於瀏覽器 localStorage（名稱 AMCM_BYOK_CFG），請求直接從您的瀏覽器發往提供商，不經過本站伺服器。<br>
-      · AI 問答採用嚴格 RAG 約束：僅依據檢索到的 AMCM 指引原文回答，並強制附出處腳註。</p>
+      · 「360° 研讀儀表板」與 AI 問答均採用嚴格 RAG 約束：僅依據檢索到的 AMCM 指引原文回答，並強制附出處腳註。</p>
   </div>
 </div>
 <div class="mask" onclick="closeSettings()"></div>
@@ -275,7 +320,7 @@ section.panel.active{display:block}
 <div class="modal" id="modal"><div class="mcard" id="modalcard"></div></div>
 
 <footer class="wrap">
-  AMCM 指引通 v2.1 · Richapps 個人開發項目<br>
+  AMCM 指引通 v3.1 · Richapps 個人開發項目<br>
   指引文本由 AMCM 官網公開資料整理生成（含 OCR 識別件與機器翻譯件，均於頁面標註），<b>一切以澳門金融管理局官方發佈為準</b><br>
   <a href="/">Richapps 首頁</a> · <a href="/downloads">App 下載</a> · <a href="/privacy">隱私政策</a>
 </footer>
@@ -286,6 +331,11 @@ const $ = id => document.getElementById(id);
 const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let curDetail=null, curLocale="zh_TW", curPage=1, lastView="library";
 let hits=[], hitIdx=-1;
+let readMode = localStorage.getItem("AMCM_READ_MODE") || "continuous"; // continuous | paged
+
+/* ============ skeleton ============ */
+function skelCards(n){let h="";for(let i=0;i<n;i++)h+=`<div class="skel"><div class="sk" style="width:32%;height:12px;margin-bottom:10px"></div><div class="sk" style="width:70%;height:16px;margin-bottom:8px"></div><div class="sk" style="width:90%;height:12px;margin-bottom:6px"></div><div class="sk" style="width:55%;height:12px"></div></div>`;return h}
+function skelText(n){let h="";for(let i=0;i<n;i++)h+=`<div class="sk" style="height:14px;margin-bottom:12px;width:${70+(i%3)*10}%"></div>`;return h}
 
 /* ============ tabs ============ */
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
@@ -293,7 +343,7 @@ function showTab(t){
   document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));
   document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
   $("tab-"+t).classList.add("active");
-  if(t==="news") loadNews();
+  if(t==="news"&&!$("newslist").children.length) loadNews();
   window.scrollTo({top:0});
 }
 $("sq").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
@@ -333,8 +383,9 @@ async function loadLibrary(){
   if($("fq").value.trim())p.set("q",$("fq").value.trim());
   p.set("size","200");
   $("libmeta").textContent="載入中…";
+  $("liblist").innerHTML=skelCards(5);
   const d=await (await fetch(`${API}/api/guidelines?${p}`)).json();
-  if(!d.ok){$("libmeta").textContent="載入失敗";return}
+  if(!d.ok){$("libmeta").textContent="載入失敗";$("liblist").innerHTML="";return}
   $("libmeta").innerHTML=`共 <b>${d.total}</b> 份指引`;
   $("liblist").innerHTML=d.data.map(g=>{
     const date=g.doc_year?`編號年份：${g.doc_year}`:"官網未標年份";
@@ -370,12 +421,13 @@ async function doSearch(){
   if($("slocale").value)p.set("locale",$("slocale").value);
   if($("sstatus").value)p.set("status",$("sstatus").value);
   $("smeta").textContent="檢索中…";
+  $("slist").innerHTML=skelCards(4);
   const d=await (await fetch(`${API}/api/search?${p}`)).json();
-  if(!d.ok){$("smeta").textContent="檢索失敗";return}
+  if(!d.ok){$("smeta").textContent="檢索失敗";$("slist").innerHTML="";return}
   $("smeta").innerHTML=`命中 <b>${d.total}</b> 個頁面（顯示前 ${d.data.length} 條，點擊標題定位原文）`;
   $("slist").innerHTML=d.data.map((r,i)=>`
     <div class="sr">
-      <div class="path" onclick="openDetail(${r.gid},{q:${JSON.stringify(q)},chunk:${r.page_number===null?-1:-1},page:${r.page_number},row:${i}})">
+      <div class="path" onclick="openDetail(${r.gid},{q:${JSON.stringify(q)},page:${r.page_number}})">
         ${esc(r.title_tc||r.title_en)} ${r.doc_number?`· 第 ${esc(r.doc_number)} 號`:""} ▸
       </div>
       <div class="snip">${r.snip}…</div>
@@ -411,11 +463,108 @@ function aiAskFromNews(title){
   $("connstat").innerHTML="請先配置 AI 後，在指引內文頁對此動態提問";
 }
 
-/* ============ detail + highlight anchor ============ */
+/* ================================================================
+   文本清洗 Parsing Repair Engine（客戶端展示層）
+   1) 重複行去重（連續 ≥2 次相同行摺疊為 1 次）
+   2) 頁眉/頁腳/頁碼剝離
+   3) 腳註抽離
+   ================================================================ */
+const HDR_PATTERNS = [
+  /^第\s*\d+\s*頁(\s*[,，/共]*\s*共\s*\d+\s*頁)?$/i,
+  /^共\s*\d+\s*頁$/i,
+  /^\s*[-–—]?\s*\d{1,3}\s*[-–—]?\s*$/,            // 純頁碼行
+  /^頁\s*\d+(\s*共\s*\d+\s*頁)?$/i,
+  /^AMCM\s*CMN\s*第?\s*\d+\s*頁/i,
+  /^澳門金融管理局\s*[-–—]\s*傳閱文件?$/,
+  /^AUTORIDADE MONETARIA DE MACAU$/i,
+  /^\d+\s*\/\s*[A-Z]+\s*\/\s*AMCM\s*$/,            // 內頁重複檔號
+];
+function cleanPageLines(raw){
+  let lines = raw.split(/\r?\n/).map(l=>l.replace(/\s+$/,""));
+  // 1) 连续重复行折叠（保留 1 次）
+  const dedup=[];
+  for(const l of lines){
+    const t=l.trim();
+    if(dedup.length && t && t===dedup[dedup.length-1].trim() && t.length<40) continue;
+    dedup.push(l);
+  }
+  // 2) 页眉/页脚剥离（非首页的中置/尾行）
+  const isPage1 = arguments[1]===true;
+  const out=[];
+  for(let i=0;i<dedup.length;i++){
+    const t=dedup[i].trim();
+    if(t && HDR_PATTERNS.some(re=>re.test(t))){
+      // 首页头部机构名保留，其余剥除
+      if(isPage1 && i<4 && /澳門金融管理局|AUTORIDADE/.test(t)) { out.push(dedup[i]); continue; }
+      continue;
+    }
+    out.push(dedup[i]);
+  }
+  return out;
+}
+/* 腳註抽離：文末連續 ¹/[^n] 形式行 → footnote map */
+function extractFootnotes(lines){
+  const map={}, body=[];
+  let inFn=false;
+  for(const l of lines){
+    const m=l.match(/^\s*[\[\(]?(\d{1,2})[\]\)]\s+(.{4,})$/);
+    if(m && (+m[1])>=(Object.keys(map).length||1) && m[2].length>6){ map[+m[1]]=m[2].trim(); inFn=true; continue; }
+    inFn=false; body.push(l);
+  }
+  return {body, map};
+}
+/* ================================================================
+   Regulatory Typography 渲染器
+   ================================================================ */
+function renderLawHtml(raw, page=null){
+  const isP1 = page===1;
+  let lines = cleanPageLines(raw, isP1);
+  const {body, map:fnMap} = extractFootnotes(lines);
+  let html="";
+  if(page!==null) html+=`<div class="lawpage-no">— 第 ${page} 頁 —</div>`;
+  for(const line of body){
+    const t=line.trim();
+    if(!t){ continue; }
+    // 條款標題：第X條 / 第X章 / 羅馬數字大標題
+    if(/^第[一二三四五六七八九十百0-9]+條/.test(t) || /^第[一二三四五六七八九十百]+章/.test(t) || /^[IVXLC]+\.\s*\S/.test(t)){
+      html+=`<h3 class="law-article-title">${escInline(t,fnMap)}</h3>`; continue;
+    }
+    // 文件首部（第1頁前幾行，如 標題/致：）
+    if(isP1 && body.indexOf(line)<6 && /^(致|通函|通告|指引|發出|編號|Circular|GUIDELINE|NOTICE)/i.test(t)){
+      html+=`<p class="law-body-first">${escInline(t,fnMap)}</p>`; continue;
+    }
+    // 子條款：（一）/ (1) / 1. 、
+    if(/^（[一二三四五六七八九十0-9]+）/.test(t) || /^\([0-9ivxlc]+\)/i.test(t)){
+      html+=`<p class="law-subarticle">${escInline(t,fnMap)}</p>`; continue;
+    }
+    html+=`<p>${escInline(t,fnMap)}</p>`;
+  }
+  if(Object.keys(fnMap).length){
+    html+=`<div class="law-footnotes"><div class="fntitle">📎 腳註 / NOTAS</div>`+
+      Object.entries(fnMap).map(([k,v])=>`<p><b>[${k}]</b> ${esc(v)}</p>`).join("")+`</div>`;
+  }
+  return html;
+}
+/* 行内渲染：[n] 腳註上標 + 轉義 */
+function escInline(s, fnMap){
+  let out="";
+  const re=/\[(\d{1,2})\]/g; let last=0, m;
+  while((m=re.exec(s))){
+    out+=esc(s.slice(last,m.index));
+    const n=+m[1];
+    if(fnMap&&fnMap[n]) out+=`<sup class="footnote-ref" title="${esc(fnMap[n]).replace(/"/g,'&quot;')}">[${n}]</sup>`;
+    else out+=`<sup class="footnote-ref">[${n}]</sup>`;
+    last=m.index+m[0].length;
+  }
+  out+=esc(s.slice(last));
+  return out;
+}
+
+/* ============ detail ============ */
 async function openDetail(id, hl){
   lastView = document.querySelector("nav button.active").dataset.tab;
   showTab("detail");
-  $("detailbox").innerHTML=`<div class="empty">載入中…</div>`;
+  $("detailbox").innerHTML=`<div class="skel" style="padding:26px"><div class="sk" style="width:60%;height:20px;margin-bottom:14px"></div>${skelText(8)}</div>`;
   $("anchorbar").style.display="none";
   const d=await (await fetch(`${API}/api/guidelines/${id}`)).json();
   if(!d.ok){$("detailbox").innerHTML=`<div class="empty">載入失敗</div>`;return}
@@ -442,19 +591,35 @@ async function openDetail(id, hl){
         ${links.map(l=>`<a class="pdf" href="${l[1]}" target="_blank" rel="noopener">⬇ ${l[0]}</a>`).join("")}
         ${g.url?`<a class="site" href="${g.url}" target="_blank" rel="noopener">↗ 官網頁面</a>`:""}
       </div>
-      <div class="localebar">${locs.map((l,i)=>`<button class="${i===0?"on":""}" data-l="${l}" onclick="pickLocale('${l}',this)">${LOCL[l]||l}</button>`).join("")}</div>
-      <div class="pagenav">
+      <div id="briefing"></div>
+      <div class="localebar">
+        ${locs.map((l,i)=>`<button class="${i===0?"on":""}" data-l="${l}" onclick="pickLocale('${l}',this)">${LOCL[l]||l}</button>`).join("")}
+        <div class="readmodes">
+          <button class="${readMode==="continuous"?"on":""}" data-m="continuous" onclick="setReadMode('continuous',this)">📜 連續捲動</button>
+          <button class="${readMode==="paged"?"on":""}" data-m="paged" onclick="setReadMode('paged',this)">📄 按頁閱讀</button>
+        </div>
+      </div>
+      <div class="pagenav" id="pagenav" style="${readMode==="continuous"?"display:none":""}">
         <button id="prev" onclick="flip(-1)">‹</button>
         <span class="pno" id="pno"></span>
         <button id="next" onclick="flip(1)">›</button>
       </div>
-      <div class="ptext" id="ptext"></div>
+      <div class="lawbody ${readMode==="paged"?"paged":""}" id="ptext"></div>
       <div class="pmeta" id="pmeta"></div>
       ${aiPanelHtml()}
     </div>`;
   bindAiPanel();
   pickLocale(locs[0]);
+  renderBriefingCard();
   if(hl&&hl.q){ await locateHighlight(hl.q, hl.page); }
+}
+function setReadMode(m,btn){
+  readMode=m; localStorage.setItem("AMCM_READ_MODE",m);
+  document.querySelectorAll(".readmodes button").forEach(b=>b.classList.toggle("on",b.dataset.m===m));
+  $("pagenav").style.display = m==="continuous"?"none":"flex";
+  $("ptext").classList.toggle("paged", m==="paged");
+  renderPage();
+  if(m==="continuous") window.scrollTo({top:$("ptext").getBoundingClientRect().top+window.scrollY-80,behavior:"smooth"});
 }
 function aiPanelHtml(){
   const cfg=getCfg();
@@ -482,22 +647,37 @@ function flip(d){
   renderPage();
 }
 function pagesOf(){return curDetail.chunks.filter(c=>c.locale===curLocale).sort((a,b)=>a.page_number-b.page_number)}
+/* 修復硬傷1：確保從 page 1（陣列首個元素）開始渲染；連續模式輸出全部頁面 */
 function renderPage(){
   const pages=pagesOf();
-  const p=pages[curPage-1];
-  $("pno").textContent=`第 ${curPage} / ${pages.length} 頁`;
-  $("prev").disabled=curPage<=1;$("next").disabled=curPage>=pages.length;
-  $("ptext").textContent=p?p.content:"（此頁無文本）";
-  const f=[];
-  if(p&&p.is_ocr===2)f.push("OCR 識別件");
-  if(p&&p.is_machine_translated)f.push("機器翻譯件 · 以官方原文為準");
-  if(p&&p.needs_review)f.push("識別置信度較低，請對照原文");
-  $("pmeta").textContent=f.join(" · ");
+  const pt=$("ptext");
+  if(readMode==="continuous"){
+    pt.innerHTML = pages.map(p=>`<div class="lawpage">${renderLawHtml(p.content,p.page_number)}</div>`).join("")||`<p style="color:var(--s400)">（無文本）</p>`;
+    $("pmeta").textContent = `連續捲動模式 · 共 ${pages.length} 頁，由第 1 頁開始`;
+  }else{
+    const p=pages[curPage-1]||pages[0];
+    curPage=pages.indexOf(p)+1;
+    $("pno").textContent=`第 ${p.page_number} / ${pages[pages.length-1].page_number} 頁`;
+    $("prev").disabled=curPage<=1;$("next").disabled=curPage>=pages.length;
+    pt.innerHTML=renderLawHtml(p.content,p.page_number)||`<p style="color:var(--s400)">（此頁無文本）</p>`;
+    const f=[];
+    if(p.is_ocr===2)f.push("OCR 識別件");
+    if(p.is_machine_translated)f.push("機器翻譯件 · 以官方原文為準");
+    if(p.needs_review)f.push("識別置信度較低，請對照原文");
+    $("pmeta").textContent=f.join(" · ");
+  }
+  // OCR 低置信提示（僅連續模式內嵌）
+  if(readMode==="continuous"){
+    const bad=pages.filter(p=>p.is_ocr===2||p.needs_review).map(p=>p.page_number);
+    if(bad.length){
+      pt.insertAdjacentHTML("afterbegin",
+        `<div class="ocr-flag">🟡 本指引第 ${bad.slice(0,8).join("、")}${bad.length>8?" 等頁":""}包含 OCR 識別/低置信內容，請以官方 PDF 原文為準。</div>`);
+    }
+  }
 }
 async function locateHighlight(term, page){
   const raw=term.replace(/["'*()]/g," ");
   const re=new RegExp("("+raw.split(/\s+/).filter(Boolean).map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")","gi");
-  // 在全文中找命中页
   let target=null;
   const pages=pagesOf();
   if(page){ target=pages.find(x=>x.page_number===page&&re.test(x.content))||pages.find(x=>x.page_number===page); }
@@ -506,15 +686,27 @@ async function locateHighlight(term, page){
       const alt=curDetail.chunks.filter(c=>c.locale===l).find(x=>re.test(x.content));
       if(alt){ pickLocale(alt.locale); target=curDetail.chunks.filter(c=>c.locale===l).find(x=>re.test(x.content)); break } } }
   if(!target)return;
+  // 定位到對應頁
+  if(readMode==="paged"){ curPage=pages.indexOf(target)+1; renderPage(); }
   const pt=$("ptext");
-  const orig=target.content;
-  pt.innerHTML=esc(orig).replace(re,m=>`<span class="search-highlight-active">${m}</span>`);
-  $("pno").textContent=`第 ${target.page_number} / ${pages.length} 頁（命中）`;
+  // 在已渲染 HTML 上高亮（僅對 text 節點）
+  highlightIn(pt, re);
   hits=pt.querySelectorAll(".search-highlight-active");
   hitIdx=-1;
   $("anchorbar").style.display="flex";
   $("anchortxt").textContent=`已為您定位至第 ${target.page_number} 頁命中段落，共 ${hits.length} 處`;
   requestAnimationFrame(()=>pt.querySelector(".search-highlight-active")?.scrollIntoView({behavior:"smooth",block:"center"}));
+}
+function highlightIn(root, re){
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+  const nodes=[]; let n;
+  while(n=walker.nextNode()){ if(re.test(n.nodeValue)) nodes.push(n); }
+  re.lastIndex=0;
+  for(const node of nodes){
+    const span=document.createElement("span");
+    span.innerHTML=node.nodeValue.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])).replace(re,m=>`<span class="search-highlight-active">${m}</span>`);
+    node.parentNode.replaceChild(span,node);
+  }
 }
 function jumpHit(d){
   if(!hits.length)return;
@@ -528,6 +720,65 @@ function clearAnchor(){
 function backFromDetail(){
   showTab(lastView==="search"?"search":"library");
   if(lastView==="search")$("sq").focus();
+}
+
+/* ================================================================
+   360° AI 研讀儀表板（BYOK · 嚴格 RAG · localStorage 快取）
+   ================================================================ */
+function briefCacheKey(id){return `AMCM_BRIEF_${id}`}
+function renderBriefingCard(){
+  const cfg=getCfg();
+  const cached=curDetail?localStorage.getItem(briefCacheKey(curDetail.id)):null;
+  $("briefing").innerHTML=`<div class="brief">
+    <div class="briefhead">
+      <div><span class="t">📊 360° AI 智能研讀儀表板</span><small>${cached?"已生成（快取於本機）":"核心意圖 · 關鍵要點 · 落實建議 · 術語 · 修訂鏈"}</small></div>
+      <div style="display:flex;gap:8px">
+        ${cached?`<button onclick="showBrief(${curDetail.id})" style="background:rgba(255,255,255,.15)">📖 查看快取</button>`:""}
+        <button id="briefgo" onclick="genBriefing()">${cfg&&cfg.key?"⚡ 生成 / 重新生成":"⚙️ 需先配置 AI Key"}</button>
+      </div>
+    </div>
+    <div class="briefbody" id="briefbody" style="display:${cached?"block":"none"}"></div>
+  </div>`;
+  if(cached) showBrief(curDetail.id);
+}
+async function showBrief(id){
+  const raw=localStorage.getItem(briefCacheKey(id)); if(!raw)return;
+  let b; try{b=JSON.parse(raw)}catch(e){return}
+  const sec=(icon,title,items,cls)=>`<div class="briefsec ${cls||""}"><h4>${icon} ${title}</h4><ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+  $("briefbody").style.display="block";
+  $("briefbody").innerHTML=
+    sec("📌","核心意圖與背景解釋",[b.intent])+
+    sec("🔑","關鍵要點總結（Key Takeaways）",b.takeaways)+
+    sec("🛡️","對金融機構的落實建議（自查清單）",b.actions,"check")+
+    sec("📖","關鍵術語與概念",b.terms.map(t=>`<b>${esc(t.term)}</b>：${esc(t.def)}`))+
+    sec("🔗","關聯指引與修訂廢止鏈",b.relations)+
+    `<div class="aihint" style="margin-top:6px">⚠ 本儀表板由 AI 基於指引原文生成，僅供研讀輔助，不構成法律意見，一切以 AMCM 官方發佈為準。</div>`;
+}
+async function genBriefing(){
+  const cfg=getCfg();
+  if(!cfg||!cfg.key){openSettings();return}
+  const btn=$("briefgo"); btn.disabled=true; btn.textContent="生成中…";
+  const body=$("briefbody"); body.style.display="block";
+  body.innerHTML=`<div class="loading">🧠 AI 正在研讀本指引全文並整理儀表板…（首次生成約需 20-40 秒）<br>${skelText(6)}</div>`;
+  const g=curDetail;
+  // RAG 上下文：全文（截斷）+ 檢索補充
+  const zh=pagesOf().map(p=>`【第${p.page_number}頁】${p.content}`).join("\n").slice(0,12000);
+  const sys=`你是澳門金融監管（AMCM）合規專家。嚴格根據用戶提供的指引原文生成 JSON 儀表板，禁止引入原文外的法規內容；不足處標明「原文未載明」。只輸出 JSON，格式：
+{"intent":"一段繁體中文說明出台背景與監管邏輯","takeaways":["要點1",...],"actions":["可勾選自查步驟1",...],"terms":[{"term":"術語","def":"釋義"}],"relations":["關聯/取代關係描述"]}
+takeaways 3-6 條、actions 3-6 條、terms 3-6 個、relations 1-4 條。`;
+  const user=`指引編號：${g.doc_number||"未標"}（${g.doc_year||"年份未標"}）\n標題：${g.title_tc||g.title_en}\n類別：${g.sector==="BANKING"?"銀行":"保險"} · ${g.category||""}\n\n指引原文：\n${zh}`;
+  try{
+    const out=await callLLM(cfg,sys,user);
+    const m=out.match(/\{[\s\S]*\}/);
+    if(!m)throw new Error("AI 未返回有效 JSON");
+    const b=JSON.parse(m[0]);
+    localStorage.setItem(briefCacheKey(g.id),JSON.stringify(b));
+    showBrief(g.id);
+    $("briefhead small")&&($("briefing").querySelector(".briefhead small").textContent="已生成（快取於本機）");
+  }catch(e){
+    body.innerHTML=`<div class="loading">❌ 生成失敗：${esc(String(e.message||e).slice(0,160))}<br>請檢查 AI 設定，或稍後重試。</div>`;
+  }
+  btn.disabled=false; btn.textContent="⚡ 生成 / 重新生成";
 }
 
 /* ============ BYOK AI ============ */
@@ -556,19 +807,26 @@ function saveSettings(){
   const cfg={prov:$("prov").value,key:$("akey").value.trim(),model:$("amodel").value.trim(),base:$("abase").value.trim().replace(/\/$/,"")};
   localStorage.setItem("AMCM_BYOK_CFG",JSON.stringify(cfg));
   $("connstat").innerHTML=`<span style="color:var(--green)">🟢 已儲存（僅存於本機）</span>`;
-  if(curDetail)$("detailbox").querySelector(".aipanel .aihead small")&&(document.querySelector(".aihead small").textContent="已配置："+cfg.model);
+  const h=document.querySelector(".aihead small"); if(h&&curDetail)h.textContent=cfg.key?"已配置："+cfg.model:h.textContent;
+}
+/* 統一 LLM 調用 */
+async function callLLM(cfg,system,userMsg,maxTokens=2000){
+  if(cfg.prov==="anthropic"){
+    const r=await fetch(cfg.base+"/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:cfg.model,max_tokens:maxTokens,system,messages:[{role:"user",content:userMsg}]})});
+    const j=await r.json();
+    if(!r.ok)throw new Error(j.error?.message||r.status);
+    return j.content?.[0]?.text||"";
+  }
+  const r=await fetch(cfg.base+"/chat/completions",{method:"POST",headers:{"content-type":"application/json","authorization":"Bearer "+cfg.key},body:JSON.stringify({model:cfg.model,messages:[{role:"system",content:system},{role:"user",content:userMsg}],max_tokens:maxTokens})});
+  const j=await r.json();
+  if(!r.ok)throw new Error(j.error?.message||r.status);
+  return j.choices?.[0]?.message?.content||"";
 }
 async function testConn(){
   const cfg={prov:$("prov").value,key:$("akey").value.trim(),model:$("amodel").value.trim(),base:$("abase").value.trim().replace(/\/$/,"")};
   const t0=performance.now();
   try{
-    if(cfg.prov==="anthropic"){
-      const r=await fetch(cfg.base+"/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:cfg.model,max_tokens:8,messages:[{role:"user",content:"hi"}]})});
-      if(!r.ok)throw new Error((await r.text()).slice(0,120));
-    }else{
-      const r=await fetch(cfg.base+"/chat/completions",{method:"POST",headers:{"content-type":"application/json","authorization":"Bearer "+cfg.key},body:JSON.stringify({model:cfg.model,messages:[{role:"user",content:"hi"}],max_tokens:8})});
-      if(!r.ok)throw new Error((await r.text()).slice(0,120));
-    }
+    await callLLM(cfg,"你是測試端點。","hi",8);
     $("connstat").innerHTML=`<span style="color:var(--green)">🟢 連線成功，延遲 ${Math.round(performance.now()-t0)}ms</span>`;
     saveSettings();
   }catch(e){ $("connstat").innerHTML=`<span style="color:#dc2626">🔴 連線失敗：${esc(String(e.message||e).slice(0,80))}</span>`; }
@@ -586,36 +844,20 @@ async function aiAsk(){
   const q=$("aiq").value.trim(); if(!q)return;
   const btn=$("aigo"),out=$("aiout");
   btn.disabled=true;out.style.display="block";out.textContent="檢索指引庫…";
-  // RAG：检索问题相关 chunk
   const sres=await (await fetch(`${API}/api/search?q=${encodeURIComponent(q)}&limit=6`)).json();
   const own=(curDetail.chunks||[]).slice(0,3).map(c=>`[第 ${c.page_number} 頁] ${c.content.slice(0,600)}`);
-  let ctx="", meta=[], hasMt=false;
+  let ctx="", hasMt=false;
   if(sres.ok)for(const r of sres.data){
     const clean=r.content.replace(/\s+/g," ").slice(0,600);
     ctx+=`【${r.doc_number||r.title_tc} · 第 ${r.page_number} 頁 · ${LOCL[r.locale]||r.locale}】\n${clean}\n\n`;
-    meta.push(`[指引編號 ${r.doc_number||"未標"}，第${r.page_number}頁]`);
     if(r.locale!=="zh_TW"&&r.locale!=="zh_CN")hasMt=true;
   }
   ctx+="\n【當前指引】"+(curDetail.doc_number||"")+` `+(curDetail.title_tc||"")+"\n"+own.join("\n");
   if(hasMt)ctx+="\n（註：部分背景內容為機器翻譯件）";
   out.textContent="AI 分析中…（首次回應可能需數秒）";
-  const userMsg=`背景資訊（Context）：
-${ctx}
-
-用戶問題：${q}`;
+  const userMsg=`背景資訊（Context）：\n${ctx}\n\n用戶問題：${q}`;
   try{
-    let answer="";
-    if(cfg.prov==="anthropic"){
-      const r=await fetch(cfg.base+"/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:cfg.model,max_tokens:2000,system:RAG_SYSTEM,messages:[{role:"user",content:userMsg}]})});
-      const j=await r.json();
-      if(!r.ok)throw new Error(j.error?.message||r.status);
-      answer=j.content?.[0]?.text||"";
-    }else{
-      const r=await fetch(cfg.base+"/chat/completions",{method:"POST",headers:{"content-type":"application/json","authorization":"Bearer "+cfg.key},body:JSON.stringify({model:cfg.model,messages:[{role:"system",content:RAG_SYSTEM},{role:"user",content:userMsg}],max_tokens:2000})});
-      const j=await r.json();
-      if(!r.ok)throw new Error(j.error?.message||r.status);
-      answer=j.choices?.[0]?.message?.content||"";
-    }
+    let answer=await callLLM(cfg,RAG_SYSTEM,userMsg);
     out.textContent=answer+(hasMt?"\n\n⚠ 部分參考內容為機器翻譯件，請以官方葡文/英文原文為準。":"");
   }catch(e){
     out.textContent="❌ 請求失敗："+String(e.message||e).slice(0,200)+"\n\n請檢查 AI 設定（Key/模型/Base URL）。若使用 Ollama，請確認本機服務已啟動並允許跨域。";

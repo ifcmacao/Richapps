@@ -329,7 +329,7 @@ section.panel.active{display:block}
 const API = "https://amcm-api.ifcmacao.workers.dev";
 const $ = id => document.getElementById(id);
 const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let curDetail=null, curLocale="zh_TW", curPage=1, lastView="library";
+let curDetail=null, curLocale="zh_TW", curPage=1, lastView="library", lastScroll={};
 let hits=[], hitIdx=-1;
 let readMode = localStorage.getItem("AMCM_READ_MODE") || "continuous"; // continuous | paged
 
@@ -563,6 +563,7 @@ function escInline(s, fnMap){
 /* ============ detail ============ */
 async function openDetail(id, hl){
   lastView = document.querySelector("nav button.active").dataset.tab;
+  lastScroll[lastView]=window.scrollY;
   showTab("detail");
   $("detailbox").innerHTML=`<div class="skel" style="padding:26px"><div class="sk" style="width:60%;height:20px;margin-bottom:14px"></div>${skelText(8)}</div>`;
   $("anchorbar").style.display="none";
@@ -603,6 +604,8 @@ async function openDetail(id, hl){
         <button id="prev" onclick="flip(-1)">‹</button>
         <span class="pno" id="pno"></span>
         <button id="next" onclick="flip(1)">›</button>
+        <input id="pagejump" type="number" min="1" placeholder="頁" style="width:56px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;margin-left:8px;font-size:12.5px" onkeydown="if(event.key==='Enter')jumpToPage()">
+        <button onclick="jumpToPage()" style="padding:5px 10px">跳至</button>
       </div>
       <div class="lawbody ${readMode==="paged"?"paged":""}" id="ptext"></div>
       <div class="pmeta" id="pmeta"></div>
@@ -646,13 +649,27 @@ function flip(d){
   curPage=Math.min(Math.max(curPage+d,1),pages.length);
   renderPage();
 }
+function jumpToPage(){
+  const n=parseInt($("pagejump")&&$("pagejump").value);
+  if(!n||n<1)return;
+  const pages=pagesOf();
+  const target=pages.find(p=>p.page_number===n)||pages[Math.min(n-1,pages.length-1)];
+  if(!target)return;
+  if(readMode==="paged"){
+    curPage=pages.indexOf(target)+1; renderPage();
+    window.scrollTo({top:$("ptext").getBoundingClientRect().top+window.scrollY-80,behavior:"smooth"});
+  }else{
+    const el=document.querySelector(`.lawpage[data-pn="${target.page_number}"]`);
+    if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+}
 function pagesOf(){return curDetail.chunks.filter(c=>c.locale===curLocale).sort((a,b)=>a.page_number-b.page_number)}
 /* 修復硬傷1：確保從 page 1（陣列首個元素）開始渲染；連續模式輸出全部頁面 */
 function renderPage(){
   const pages=pagesOf();
   const pt=$("ptext");
   if(readMode==="continuous"){
-    pt.innerHTML = pages.map(p=>`<div class="lawpage">${renderLawHtml(p.content,p.page_number)}</div>`).join("")||`<p style="color:var(--s400)">（無文本）</p>`;
+    pt.innerHTML = pages.map(p=>`<div class="lawpage" data-pn="${p.page_number}">${renderLawHtml(p.content,p.page_number)}</div>`).join("")||`<p style="color:var(--s400)">（無文本）</p>`;
     $("pmeta").textContent = `連續捲動模式 · 共 ${pages.length} 頁，由第 1 頁開始`;
   }else{
     const p=pages[curPage-1]||pages[0];
@@ -719,6 +736,8 @@ function clearAnchor(){
 }
 function backFromDetail(){
   showTab(lastView==="search"?"search":"library");
+  const y=lastScroll[lastView]||0;
+  requestAnimationFrame(()=>window.scrollTo({top:y}));
   if(lastView==="search")$("sq").focus();
 }
 

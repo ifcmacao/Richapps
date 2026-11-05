@@ -19,3 +19,7 @@ Thumbs.db
 
 # 临时发布目录（wrangler pages deploy 用）
 public/
+
+# AAB 构建产物
+/android/build/
+/android-afcm/build/

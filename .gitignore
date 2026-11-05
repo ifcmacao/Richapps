@@ -23,3 +23,4 @@ public/
 # AAB 构建产物
 /android/build/
 /android-afcm/build/
+amcm-worker/

@@ -400,6 +400,8 @@ export default {
         const locale = q("locale");
         const status = q("status");
         const limit = Math.min(parseInt(q("limit", "20")), 50);
+        const page = Math.max(parseInt(q("page", "1")), 1);
+        const offset = (page - 1) * limit;
         const phraseOf = (w) =>
           /^[\u3400-\u9fff\uf900-\ufaff]+$/.test(w)
             ? '"' + w.split("").join(" ") + '"'
@@ -410,19 +412,36 @@ export default {
         let bindIdx = 2;
         if (locale) { conds += ` AND f.locale = ?${bindIdx++}`; binds.push(locale); }
         if (status) { conds += ` AND g.status = ?${bindIdx++}`; binds.push(status); }
-        binds.push(limit);
-        const r = await env.DB.prepare(
-          `SELECT f.guideline_id AS gid, f.page_number, f.locale, f.content,
+        /* (gid,page) 去重（JS 層）：zh_TW > zh_CN > en > pt_PT 優先保留；total 按去重後口徑（GROUP BY 查詢） */
+        const raw = await env.DB.prepare(
+          `SELECT f.guideline_id AS gid, f.page_number, f.locale,
                   snippet(chunks_fts, 0, '<mark>', '</mark>', '…', 40) AS snip,
                   g.title_tc, g.doc_number, g.sector, g.category, g.status, g.superseded_by,
                   g.pdf_tc, g.pdf_pt, g.pdf_en, g.url
            FROM chunks_fts f JOIN guidelines g ON g.id = f.guideline_id
-           ${conds} ORDER BY rank LIMIT ?${bindIdx}`
+           ${conds} ORDER BY rank LIMIT 500`
         ).bind(...binds).all();
+        const prio = { zh_TW: 0, zh_CN: 1, en: 2 };
+        const seen = new Map();
+        const localeSets = new Map();
+        for (const r of raw.results) {
+          const k = r.gid + ":" + r.page_number;
+          if (!localeSets.has(k)) localeSets.set(k, new Set());
+          localeSets.get(k).add(r.locale);
+          const prev = seen.get(k);
+          if (!prev || (prio[r.locale] ?? 9) < (prio[prev.locale] ?? 9)) seen.set(k, r);
+        }
+        const all = [...seen.values()].map((r) => ({
+          ...r, locales: [...localeSets.get(r.gid + ":" + r.page_number)],
+        }));
+        const data = all.slice((page - 1) * limit, (page - 1) * limit + limit);
         const cnt = await env.DB.prepare(
-          `SELECT COUNT(*) AS n FROM chunks_fts f JOIN guidelines g ON g.id = f.guideline_id ${conds}`
-        ).bind(...binds.slice(0, -1)).first();
-        return json({ ok: true, total: cnt.n, data: r.results });
+          `SELECT COUNT(*) AS n FROM (
+             SELECT 1 FROM chunks_fts f JOIN guidelines g ON g.id = f.guideline_id ${conds}
+             GROUP BY f.guideline_id, f.page_number
+           )`
+        ).bind(...binds).first();
+        return json({ ok: true, total: cnt.n, page, limit, data });
       }
 
       // ================= subscribe =================

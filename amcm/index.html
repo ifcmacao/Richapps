@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMCM 指引通 · 澳門金融管理局監管指引庫</title>
+<style>
+:root{
+  --navy:#1B2A4A; --navy2:#24365c; --gold:#C9A961; --gold2:#b3924e;
+  --bg:#f4f6fa; --card:#fff; --text:#1e293b; --muted:#64748b; --line:#e2e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:28px 20px 20px;border-bottom:3px solid var(--gold)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#e0c98a);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;letter-spacing:1px}
+h1{font-size:24px;font-weight:800}
+.brand small{display:block;font-weight:400;font-size:12px;opacity:.75;letter-spacing:.5px}
+nav{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}
+nav button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#e8edf7;padding:9px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-size:15px;transition:.15s}
+nav button.active{background:#fff;color:var(--navy);font-weight:700;border-color:#fff}
+.searchbar{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.searchbar input{flex:1;min-width:220px;padding:12px 16px;border:2px solid var(--line);border-radius:10px;font-size:16px;outline:none;background:#fff}
+.searchbar input:focus{border-color:var(--gold)}
+.searchbar select{padding:12px;border:2px solid var(--line);border-radius:10px;background:#fff;font-size:14px}
+.searchbar button{padding:12px 26px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;cursor:pointer;font-weight:700}
+.searchbar button:hover{background:var(--navy2)}
+.meta{color:var(--muted);font-size:13px;margin:6px 0 14px}
+.gcard{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:.15s}
+.gcard:hover{box-shadow:0 4px 16px rgba(27,42,74,.10);transform:translateY(-1px)}
+.gcard h3{font-size:16px;color:var(--navy);font-weight:700}
+.gcard .no{color:var(--gold2);font-weight:700;font-size:13px;margin-right:8px}
+.badges{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;padding:2px 10px;border-radius:20px;background:#eef2f8;color:var(--muted)}
+.tag.ocr{background:#fef3c7;color:#92400e}
+.tag.mt{background:#ede9fe;color:#5b21b6}
+.tag.sector{background:#e0e9f8;color:var(--navy)}
+mark{background:#fde68a;padding:0 2px;border-radius:2px}
+.sr{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.sr .snip{font-size:14px;color:#334155;margin-top:6px}
+.sr .path{font-size:12px;color:var(--gold2);font-weight:700;cursor:pointer}
+.newsitem{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin-bottom:8px;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.newsitem .d{color:var(--muted);font-size:13px;white-space:nowrap}
+section.panel{display:none}
+section.panel.active{display:block}
+/* detail */
+.back{color:var(--navy);cursor:pointer;font-weight:700;margin:16px 0;font-size:14px}
+.detail{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
+.detail h2{color:var(--navy);font-size:20px;margin-bottom:8px}
+.dl{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.dl a{background:var(--navy);color:#fff;text-decoration:none;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:600}
+.dl a:hover{background:var(--navy2)}
+.dl a.en{background:var(--gold);color:var(--navy)}
+.notice{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:8px;padding:10px 14px;font-size:13px;margin:12px 0}
+.localebar{display:flex;gap:8px;margin:16px 0 10px;flex-wrap:wrap}
+.localebar button{padding:7px 16px;border-radius:20px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.localebar button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pagenav{display:flex;align-items:center;gap:12px;margin:10px 0}
+.pagenav button{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px}
+.pagenav button:disabled{opacity:.35;cursor:default}
+.ptext{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:20px;font-size:15px;min-height:200px;max-height:65vh;overflow:auto}
+.pmeta{color:var(--muted);font-size:12px;margin-top:8px}
+footer{margin:40px 0 24px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.9}
+footer a{color:var(--navy)}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+@media(max-width:600px){h1{font-size:19px}.ptext{font-size:14px;padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">指</div>
+      <div><h1>AMCM 指引通</h1><small>澳門金融管理局監管指引資料庫 · 非官方 · 以官方發佈為準</small></div>
+    </div>
+    <nav>
+      <button data-tab="library" class="active">📚 指引庫</button>
+      <button data-tab="search">🔎 全文檢索</button>
+      <button data-tab="news">📰 最新動態</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <!-- 指引庫 -->
+  <section class="panel active" id="tab-library">
+    <div class="searchbar">
+      <select id="sector">
+        <option value="">全部類別</option>
+        <option value="BANKING">銀行業</option>
+        <option value="INSURANCE">保險業</option>
+      </select>
+      <input id="libq" placeholder="按標題 / 文件編號檢索…">
+      <button onclick="loadLibrary()">檢索</button>
+    </div>
+    <div class="meta" id="libmeta"></div>
+    <div id="liblist"></div>
+  </section>
+
+  <!-- 全文检索 -->
+  <section class="panel" id="tab-search">
+    <div class="searchbar">
+      <select id="slocale">
+        <option value="">全部語言</option>
+        <option value="zh_TW">繁體中文</option>
+        <option value="en">English</option>
+        <option value="pt_PT">Português</option>
+      </select>
+      <input id="sq" placeholder="輸入關鍵詞，如：資本充足、流動性、反洗錢、liquidity…">
+      <button onclick="doSearch()">檢索</button>
+    </div>
+    <div class="meta" id="smeta"></div>
+    <div id="slist"></div>
+  </section>
+
+  <!-- 动态 -->
+  <section class="panel" id="tab-news">
+    <div class="meta">資料來源：AMCM 官網新聞與公告（每日同步）</div>
+    <div id="newslist"></div>
+  </section>
+
+  <!-- 详情 -->
+  <section class="panel" id="tab-detail">
+    <div class="back" onclick="showTab('library')">← 返回指引庫</div>
+    <div id="detailbox"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  AMCM 指引通 · Richapps 個人開發項目<br>
+  指引文本由 AMCM 官網公開資料整理，<b>一切以澳門金融管理局官方發佈為準</b> ·
+  <a href="/" >Richapps 首頁</a> · <a href="/downloads">App 下載</a> · <a href="/privacy">隱私政策</a>
+</footer>
+
+<script>
+const API = "https://amcm-api.ifcmacao.workers.dev";
+const $ = id => document.getElementById(id);
+let curDetail = null;
+
+document.querySelectorAll("nav button").forEach(b =>
+  b.onclick = () => showTab(b.dataset.tab));
+
+function showTab(t){
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+  $("tab-"+t).classList.add("active");
+  if(t==="news") loadNews();
+  window.scrollTo(0,0);
+}
+$("sq").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
+$("libq").addEventListener("keydown",e=>{if(e.key==="Enter")loadLibrary()});
+
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+async function loadLibrary(){
+  const sector=$("sector").value, q=$("libq").value.trim();
+  const u=`${API}/api/guidelines?size=100`+(sector?`&sector=${sector}`:"")+(q?`&q=${encodeURIComponent(q)}`:"");
+  $("libmeta").textContent="載入中…";
+  const d=await (await fetch(u)).json();
+  if(!d.ok){$("libmeta").textContent="載入失敗";return}
+  $("libmeta").textContent=`共 ${d.total} 份指引`;
+  $("liblist").innerHTML=d.data.map(g=>`
+    <div class="gcard" onclick="openDetail(${g.id})">
+      <h3>${g.doc_number?`<span class="no">第 ${esc(g.doc_number)} 號</span>`:""}${esc(g.title_tc||g.title_en)}</h3>
+      <div class="badges">
+        <span class="tag sector">${g.sector==="BANKING"?"銀行業":"保險業"}</span>
+        ${g.category?`<span class="tag">${esc(g.category)}</span>`:""}
+        ${g.pages?`<span class="tag">${g.pages} 頁文本</span>`:""}
+        ${g.has_ocr?`<span class="tag ocr">OCR 件</span>`:""}
+        ${g.has_mt?`<span class="tag mt">含機器翻譯</span>`:""}
+      </div>
+    </div>`).join("") || `<div class="empty">沒有符合的指引</div>`;
+}
+
+async function doSearch(){
+  const q=$("sq").value.trim(), loc=$("slocale").value;
+  if(!q) return;
+  $("smeta").textContent="檢索中…";
+  const u=`${API}/api/search?q=${encodeURIComponent(q)}&limit=20`+(loc?`&locale=${loc}`:"");
+  const d=await (await fetch(u)).json();
+  if(!d.ok){$("smeta").textContent="檢索失敗";return}
+  $("smeta").textContent=`命中 ${d.total} 個頁面（顯示前 ${d.data.length} 條）`;
+  $("slist").innerHTML=d.data.map(r=>`
+    <div class="sr">
+      <div class="path" onclick="openDetail(${r.gid})">${esc(r.title_tc||r.title_en)} ▸</div>
+      <div class="snip">${r.snip}…</div>
+      <div class="badges" style="margin-top:8px">
+        <span class="tag">第 ${r.page_number} 頁</span>
+        <span class="tag">${r.locale}</span>
+        ${r.doc_number?`<span class="tag">第 ${esc(r.doc_number)} 號</span>`:""}
+        ${r["pdf_"+(r.locale==="en"?"en":r.locale==="pt_PT"?"pt":"tc")]?`<a class="tag" href="${r["pdf_"+(r.locale==="en"?"en":r.locale==="pt_PT"?"pt":"tc")]}" target="_blank" rel="noopener">官方 PDF ↗</a>`:""}
+      </div>
+    </div>`).join("") || `<div class="empty">沒有命中的頁面</div>`;
+}
+
+async function loadNews(){
+  $("newslist").innerHTML=`<div class="empty">載入中…</div>`;
+  const d=await (await fetch(`${API}/api/news?limit=50`)).json();
+  $("newslist").innerHTML=(d.data||[]).map(n=>`
+    <div class="newsitem">
+      <div>${esc(n.title)}</div>
+      <div class="d">${esc(n.published||"")}</div>
+    </div>`).join("") || `<div class="empty">暫無動態</div>`;
+}
+
+async function openDetail(id){
+  showTab("detail");
+  $("detailbox").innerHTML=`<div class="empty">載入中…</div>`;
+  const d=await (await fetch(`${API}/api/guidelines/${id}`)).json();
+  if(!d.ok){$("detailbox").innerHTML=`<div class="empty">載入失敗</div>`;return}
+  curDetail=d.data;
+  const g=d.data;
+  const locs=[...new Set(g.chunks.map(c=>c.locale))];
+  const names={zh_TW:"繁體中文",zh_CN:"簡體中文",en:"English",pt_PT:"Português"};
+  const links=[];
+  if(g.pdf_tc)links.push(["官方原文 · 繁中",g.pdf_tc,""]);
+  if(g.pdf_zh_cn)links.push(["官方原文 · 簡中",g.pdf_zh_cn,""]);
+  if(g.pdf_pt)links.push(["官方原文 · 葡文",g.pdf_pt,""]);
+  if(g.pdf_en)links.push(["官方原文 · 英文",g.pdf_en,"en"]);
+  $("detailbox").innerHTML=`
+    <div class="detail">
+      <h2>${g.doc_number?`第 ${esc(g.doc_number)} 號 · `:""}${esc(g.title_tc||g.title_en)}</h2>
+      ${g.title_en&&g.title_tc?`<div style="color:var(--muted);font-size:14px">${esc(g.title_en)}</div>`:""}
+      <div class="badges" style="margin:10px 0">
+        <span class="tag sector">${g.sector==="BANKING"?"銀行業":"保險業"}</span>
+        ${g.category?`<span class="tag">${esc(g.category)}</span>`:""}
+        ${g.summary?`<span class="tag">${esc(g.summary)}</span>`:""}
+      </div>
+      <div class="notice">⚠ 本文檔文本僅供檢索參考（${g.chunks.some(c=>c.is_ocr===2)?"部分為 OCR 識別件，":""}以官方發佈的 PDF 原文為準）。下載鏈接均指向 AMCM 官網。</div>
+      <div class="dl">${links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener" class="${l[2]}">⬇ ${l[0]}</a>`).join("")}
+      ${g.url?`<a href="${g.url}" target="_blank" rel="noopener">↗ 官網頁面</a>`:""}</div>
+      <div class="localebar">${locs.map((l,i)=>`<button class="${i===0?"on":""}" data-l="${l}" onclick="pickLocale('${l}',this)">${names[l]||l}</button>`).join("")}</div>
+      <div class="pagenav">
+        <button id="prev" onclick="flip(-1)">‹</button>
+        <span id="pno" style="font-size:14px;color:var(--muted)"></span>
+        <button id="next" onclick="flip(1)">›</button>
+      </div>
+      <div class="ptext" id="ptext"></div>
+      <div class="pmeta" id="pmeta"></div>
+    </div>`;
+  pickLocale(locs[0]);
+}
+
+let curLocale="zh_TW", curPage=1;
+function pickLocale(l,btn){
+  curLocale=l; curPage=1;
+  document.querySelectorAll(".localebar button").forEach(b=>b.classList.toggle("on",b.dataset.l===l));
+  renderPage();
+}
+function flip(d){
+  const max=curDetail.chunks.filter(c=>c.locale===curLocale).length;
+  curPage=Math.min(Math.max(curPage+d,1),max);
+  renderPage();
+}
+function renderPage(){
+  const pages=curDetail.chunks.filter(c=>c.locale===curLocale).sort((a,b)=>a.page_number-b.page_number);
+  const p=pages[curPage-1];
+  $("pno").textContent=`第 ${curPage} / ${pages.length} 頁`;
+  $("prev").disabled=curPage<=1; $("next").disabled=curPage>=pages.length;
+  $("ptext").textContent=p?p.content:"（此頁無文本）";
+  const flags=[];
+  if(p&&p.is_ocr===2)flags.push("OCR 識別件");
+  if(p&&p.is_machine_translated)flags.push("機器翻譯件 · 以官方原文為準");
+  if(p&&p.needs_review)flags.push("識別置信度較低，請對照原文");
+  $("pmeta").textContent=flags.join(" · ");
+}
+
+loadLibrary();
+</script>
+</body>
+</html>
